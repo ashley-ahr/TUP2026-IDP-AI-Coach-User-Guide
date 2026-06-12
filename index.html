@@ -224,6 +224,79 @@ hr.dv{border:none;border-top:1px solid var(--border);margin:28px 0}
 .en{display:block}.vi{display:none}
 body.lv .en{display:none}body.lv .vi{display:block}
 
+
+/* EMBED MODE FOR SHAREPOINT
+   Use ?embed=1 in the iframe URL to keep the SharePoint banner as the main visual.
+   In embed mode, the large hero becomes a compact action bar with the key buttons. */
+body.embed-mode{
+  background:transparent;
+}
+
+body.embed-mode .hero{
+  padding:14px 40px;
+  background:#FFFFFF;
+  border-bottom:1px solid var(--border);
+  overflow:visible;
+}
+
+body.embed-mode .hero::before,
+body.embed-mode .hero::after,
+body.embed-mode .hero-logo,
+body.embed-mode .hbadge,
+body.embed-mode .hero h1,
+body.embed-mode .hero-sub{
+  display:none;
+}
+
+body.embed-mode .hi{
+  display:block;
+  max-width:980px;
+}
+
+body.embed-mode .hero-actions{
+  justify-content:flex-start;
+  gap:8px;
+}
+
+body.embed-mode .hero-cta,
+body.embed-mode .hero-secondary{
+  padding:8px 14px;
+  font-size:12px;
+  border-radius:999px;
+  transform:none;
+}
+
+body.embed-mode .hero-secondary{
+  background:#FFFFFF;
+  border:1px solid var(--border);
+  color:var(--navy);
+}
+
+body.embed-mode .hero-secondary:hover{
+  background:var(--orange-light);
+  border-color:var(--orange-mid);
+  color:var(--orange-dark);
+  transform:none;
+}
+
+body.embed-mode .hero-cta:hover{
+  transform:none;
+}
+
+body.embed-mode .wrap{
+  padding-top:24px;
+}
+
+@media(max-width:600px){
+  body.embed-mode .hero{
+    padding:12px 16px;
+  }
+
+  body.embed-mode .hero-actions{
+    justify-content:flex-start;
+  }
+}
+
 @media(max-width:800px){
   .fg{grid-template-columns:1fr 1fr}
   .qs{grid-template-columns:1fr}
@@ -263,13 +336,13 @@ body.lv .en{display:none}body.lv .vi{display:block}
            onerror="this.style.display='none';this.parentElement.textContent='🤖'">
     </div>
     <div>
-      <div class="hbadge">📘 Talent Uplift Program</div>
+      <div class="hbadge">Created by: ASIA HUMAN RESOURCES</div>
       <h1>IDP <em>AI Coach</em>
         <span class="en" style="display:inline"> — User Guide</span>
-        <span class="vi" style="display:none"> — Hướng Dẫn Sử Dụng</span>
+        <span class="vi" style="display:none"> — Hướng dẫn sử dụng</span>
       </h1>
-      <p class="hero-sub en">Build stronger IDPs. Execute with ownership. Show visible readiness.</p>
-      <p class="hero-sub vi">Xây dựng IDP mạnh hơn. Thực hiện với ownership. Thể hiện readiness rõ ràng hơn.</p>
+      <p class="hero-sub en">Build practical IDP actions. Turn development goals into visible progress.</p>
+      <p class="hero-sub vi">Xây dựng IDP thực tế hơn, triển khai rõ ràng hơn và theo dõi tiến độ phát triển dễ hơn.</p>
       <div class="hero-actions">
         <a href="https://teams.microsoft.com/l/app/?source=app-details-dialog&sharedAppResource=TaosSharedApp&titleId=T_0b95707d-bab9-d7a9-d7d8-36d320dc5cc4&threadId=19%3A51e5796c-627d-420f-b173-754fe3b016a3_e3a3eafb-d6c2-4525-bae3-bbf8311a5a02%40unq.gbl.spaces" target="_blank" rel="noopener noreferrer" class="hero-cta">
           <img class="btn-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Microsoft_Office_Teams_%282025%E2%80%93present%29.svg/3840px-Microsoft_Office_Teams_%282025%E2%80%93present%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Microsoft Teams logo">
@@ -284,7 +357,7 @@ body.lv .en{display:none}body.lv .vi{display:block}
         <button class="hero-secondary" onclick="copyText(getStarterPrompt())">
           <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           <span class="en" style="display:inline">Copy Starter Prompt</span>
-          <span class="vi" style="display:none">Copy Prompt Mẫu</span>
+          <span class="vi" style="display:none">Copy prompt mẫu</span>
         </button>
       </div>
     </div>
@@ -296,11 +369,11 @@ body.lv .en{display:none}body.lv .vi{display:block}
     <a href="#quick" class="en">Quick Start</a><a href="#quick" class="vi">Bắt đầu nhanh</a>
     <a href="#formula" class="en">Prompt Formula</a><a href="#formula" class="vi">Công thức prompt</a>
     <a href="#modes" class="en">Use Cases</a><a href="#modes" class="vi">Cách sử dụng</a>
-    <a href="#better" class="en">Better Answers</a><a href="#better" class="vi">Output tốt hơn</a>
-    <a href="#quality" class="en">Strong IDP Action</a><a href="#quality" class="vi">Action mạnh</a>
+    <a href="#better" class="en">Better Answers</a><a href="#better" class="vi">Câu trả lời tốt hơn</a>
+    <a href="#quality" class="en">Strong IDP Action</a><a href="#quality" class="vi">IDP action mạnh</a>
     <a href="#talentreview" class="en">Talent Review</a><a href="#talentreview" class="vi">Talent Review</a>
     <a href="#templates" class="en">Templates</a><a href="#templates" class="vi">Templates</a>
-    <a href="#submit" class="en">Before Submit</a><a href="#submit" class="vi">Trước khi submit</a>
+    <a href="#submit" class="en">Before Submit</a><a href="#submit" class="vi">Trước khi gửi</a>
   </div>
 </nav>
 
@@ -309,8 +382,8 @@ body.lv .en{display:none}body.lv .vi{display:block}
   <div class="notice">
     <div class="ni">⚠️</div>
     <div>
-      <p class="en"><strong>Important: </strong>The IDP AI Coach is a <strong>thinking and coaching tool</strong>. It supports your IDP journey but does not replace your Direct Leader, Mentor, HoD, or your own judgment. Always validate AI suggestions with the people who know your work best.</p>
-      <p class="vi"><strong>Lưu ý quan trọng: </strong>IDP AI Coach là <strong>công cụ tư duy và coaching</strong>. Công cụ này hỗ trợ hành trình IDP của bạn nhưng không thay thế Direct Leader, Mentor, HoD hoặc judgment của chính bạn. Luôn xác nhận gợi ý của AI với người hiểu rõ công việc của bạn nhất.</p>
+      <p class="en"><strong>Important: </strong>The IDP AI Coach is a <strong>thinking and coaching tool</strong>. It supports your IDP journey but does not replace your Direct Leader, Mentor, HoD, <strong>or your own judgment</strong>. Always validate AI suggestions with the people who know your work best.</p>
+      <p class="vi"><strong>Lưu ý quan trọng: </strong>IDP AI Coach là <strong>công cụ hỗ trợ bạn suy nghĩ và định hướng cách xây dựng IDP</strong>. Công cụ này không thay thế Direct Leader, Mentor, HoD hoặc <strong>nhận định của chính bạn</strong>. Hãy trao đổi lại các gợi ý quan trọng với những người hiểu rõ công việc của bạn nhất.</p>
     </div>
   </div>
 
@@ -318,16 +391,16 @@ body.lv .en{display:none}body.lv .vi{display:block}
   <section class="sec" id="quick">
     <div class="sh"><div class="sn">1</div>
       <div class="st en">Quick Start: use the AI Coach in 3 steps</div>
-      <div class="st vi">Bắt đầu nhanh: dùng AI Coach trong 3 bước</div>
+      <div class="st vi">Bắt đầu nhanh: sử dụng AI Coach trong 3 bước</div>
     </div>
     <div class="qs">
       <div class="qspanel">
         <p class="subtxt en">If you are not sure where to begin, start here. The goal is not to write a perfect prompt — the goal is to give the AI enough real context to help you.</p>
-        <p class="subtxt vi">Nếu bạn chưa biết bắt đầu từ đâu, hãy bắt đầu ở đây. Mục tiêu không phải là viết prompt hoàn hảo — mà là cung cấp đủ context thực tế để AI hỗ trợ đúng hơn.</p>
+        <p class="subtxt vi">Nếu chưa biết bắt đầu từ đâu, bạn có thể làm theo 3 bước dưới đây. Bạn không cần viết prompt hoàn hảo; chỉ cần cung cấp đủ bối cảnh công việc để AI đưa ra gợi ý sát hơn.</p>
         <div class="steps">
-          <div class="step"><div class="stepn">1</div><h4 class="en">Share your role path</h4><h4 class="vi">Chia sẻ role path</h4><p class="en">Current Role + Target Role help AI map the right level of development.</p><p class="vi">Current Role + Target Role giúp AI map đúng level phát triển.</p></div>
-          <div class="step"><div class="stepn">2</div><h4 class="en">Describe the real challenge</h4><h4 class="vi">Mô tả challenge thật</h4><p class="en">Use simple words. Behavior-based context is better than generic competency names.</p><p class="vi">Dùng từ đơn giản. Context theo behavior tốt hơn chỉ nêu tên competency.</p></div>
-          <div class="step"><div class="stepn">3</div><h4 class="en">Ask for the output</h4><h4 class="vi">Nói rõ output cần</h4><p class="en">Action, full IDP entry, review, execution help, or Talent Review update.</p><p class="vi">Action, full IDP entry, review, execution help hoặc Talent Review update.</p></div>
+          <div class="step"><div class="stepn">1</div><h4 class="en">Share your role path</h4><h4 class="vi">Chia sẻ vai trò hiện tại và vai trò mục tiêu</h4><p class="en">Current Role + Target Role help AI map the right level of development.</p><p class="vi">Current Role và Target Role giúp AI hiểu đúng định hướng phát triển của bạn.</p></div>
+          <div class="step"><div class="stepn">2</div><h4 class="en">Describe the real challenge</h4><h4 class="vi">Mô tả vấn đề thực tế</h4><p class="en">Use simple words. Behavior-based context is better than generic competency names.</p><p class="vi">Hãy mô tả bằng ngôn ngữ đơn giản. Ví dụ về hành vi cụ thể sẽ hữu ích hơn việc chỉ nêu tên năng lực cần phát triển.</p></div>
+          <div class="step"><div class="stepn">3</div><h4 class="en">Ask for the output</h4><h4 class="vi">Nói rõ kết quả bạn cần</h4><p class="en">Action, full IDP entry, review, execution help, or Talent Review update.</p><p class="vi">Ví dụ: tạo action, hoàn thiện IDP entry, review action, gợi ý cách triển khai hoặc chuẩn bị Talent Review.</p></div>
         </div>
       </div>
       <div class="starter">
@@ -357,38 +430,38 @@ Please help me create practical IDP actions that fit my current role and do not 
   <section class="sec" id="what">
     <div class="sh">
       <div class="st en">What can the IDP AI Coach help you with?</div>
-      <div class="st vi">IDP AI Coach có thể giúp gì cho bạn?</div>
+      <div class="st vi">IDP AI Coach có thể hỗ trợ bạn những gì?</div>
     </div>
     <div class="ucg">
       <div class="uc"><div class="uc-ic">🏗️</div>
         <div class="uc-t en">Build your IDP</div><div class="uc-t vi">Xây dựng IDP</div>
         <div class="uc-d en">Create strong, practical development actions aligned with your target role</div>
-        <div class="uc-d vi">Tạo development actions thực tế và phù hợp với target role của bạn</div>
+        <div class="uc-d vi">Tạo IDP actions thực tế và phù hợp với vai trò mục tiêu của bạn</div>
       </div>
       <div class="uc"><div class="uc-ic">🔍</div>
-        <div class="uc-t en">Review & Improve</div><div class="uc-t vi">Review & Cải thiện</div>
+        <div class="uc-t en">Review & Improve</div><div class="uc-t vi">Review & cải thiện</div>
         <div class="uc-d en">Identify weak or generic actions and rewrite them with more specificity and ownership</div>
-        <div class="uc-d vi">Phát hiện action yếu hoặc generic và viết lại cụ thể hơn, có ownership hơn</div>
+        <div class="uc-d vi">Nhận diện những action còn chung chung và viết lại cụ thể hơn, rõ trách nhiệm hơn</div>
       </div>
       <div class="uc"><div class="uc-ic">🎯</div>
-        <div class="uc-t en">Execution Coaching</div><div class="uc-t vi">Coaching thực thi</div>
+        <div class="uc-t en">Execution Coaching</div><div class="uc-t vi">Hỗ trợ triển khai</div>
         <div class="uc-d en">Get practical next steps, handle blockers, and keep your development moving forward</div>
-        <div class="uc-d vi">Nhận gợi ý next steps, xử lý blockers và giữ development tiến về phía trước</div>
+        <div class="uc-d vi">Gợi ý bước tiếp theo, cách xử lý vướng mắc và duy trì tiến độ phát triển</div>
       </div>
       <div class="uc"><div class="uc-ic">🔄</div>
-        <div class="uc-t en">Adjust Actions</div><div class="uc-t vi">Điều chỉnh Action</div>
+        <div class="uc-t en">Adjust Actions</div><div class="uc-t vi">Điều chỉnh action</div>
         <div class="uc-d en">Revise an action when circumstances change — without losing the development intent</div>
-        <div class="uc-d vi">Revise action khi tình huống thay đổi — không mất đi development intent</div>
+        <div class="uc-d vi">Điều chỉnh action khi tình huống thay đổi nhưng vẫn giữ đúng mục tiêu phát triển ban đầu</div>
       </div>
       <div class="uc"><div class="uc-ic">📊</div>
         <div class="uc-t en">Talent Review Prep</div><div class="uc-t vi">Chuẩn bị Talent Review</div>
         <div class="uc-d en">Turn raw progress notes into a clear, leadership-ready narrative for your review</div>
-        <div class="uc-d vi">Chuyển progress notes thô thành narrative rõ ràng cho Talent Review</div>
+        <div class="uc-d vi">Chuyển ghi chú tiến độ thành nội dung trình bày rõ ràng hơn cho Talent Review</div>
       </div>
       <div class="uc"><div class="uc-ic">🚀</div>
-        <div class="uc-t en">Leadership Shift</div><div class="uc-t vi">Leadership Shift</div>
+        <div class="uc-t en">Chuyển từ task sang leadership</div><div class="uc-t vi">Chuyển từ task sang leadership</div>
         <div class="uc-d en">Move from completing tasks toward building visible leadership readiness in your current role</div>
-        <div class="uc-d vi">Chuyển từ hoàn thành task sang xây dựng leadership readiness rõ ràng trong role hiện tại</div>
+        <div class="uc-d vi">Chuyển từ việc chỉ hoàn thành công việc sang thể hiện rõ hơn năng lực lãnh đạo trong vai trò hiện tại</div>
       </div>
     </div>
   </section>
@@ -397,9 +470,9 @@ Please help me create practical IDP actions that fit my current role and do not 
 
   <!-- SHORT NOTE: CONTEXT RULE -->
   <section class="notequote">
-    <div class="qtitle">✍️ <span class="en">Context makes the difference</span><span class="vi">Context tạo nên khác biệt</span></div>
+    <div class="qtitle">✍️ <span class="en">Context makes the difference</span><span class="vi">Bối cảnh là phần quan trọng nhất</span></div>
     <p class="en"><strong>Weak prompt:</strong> “Help me create IDP actions.” <br><strong>Better prompt:</strong> include your Current Role, Target Role, real challenge, and what output you need. The clearer your context, the more practical and usable the AI response will be.</p>
-    <p class="vi"><strong>Prompt yếu:</strong> “Help me create IDP actions.” <br><strong>Prompt tốt hơn:</strong> thêm Current Role, Target Role, challenge thực tế và output bạn cần. Context càng rõ, câu trả lời của AI càng thực tế và dùng được.</p>
+    <p class="vi"><strong>Prompt chưa đủ rõ:</strong> “Help me create IDP actions.” <br><strong>Prompt tốt hơn:</strong> thêm Current Role, Target Role, vấn đề thực tế và kết quả bạn cần. Bối cảnh càng rõ, gợi ý của AI càng dễ áp dụng vào công việc thật.</p>
   </section>
 
   <hr class="dv">
@@ -411,10 +484,10 @@ Please help me create practical IDP actions that fit my current role and do not 
       <div class="st vi">Công thức prompt</div>
     </div>
     <div class="fg">
-      <div class="fs"><div class="fn">1</div><h4>Current Role</h4><p class="en">Use your exact role title: Senior Accountant, Product Engineer, Recruiting Specialist...</p><p class="vi">Dùng đúng role title: Senior Accountant, Product Engineer, Recruiting Specialist...</p></div>
-      <div class="fs"><div class="fn">2</div><h4>Target Role</h4><p class="en">Use your exact target role: TL of Accounting, Engineering Project Manager...</p><p class="vi">Dùng đúng target role: TL of Accounting, Engineering Project Manager...</p></div>
-      <div class="fs"><div class="fn">3</div><h4 class="en">Real challenge</h4><h4 class="vi">Challenge thật</h4><p class="en">Describe what you actually struggle with. Behavior-level context helps most.</p><p class="vi">Mô tả điều bạn thực sự gặp khó. Context theo behavior là hữu ích nhất.</p></div>
-      <div class="fs"><div class="fn">4</div><h4 class="en">Needed output</h4><h4 class="vi">Output cần</h4><p class="en">Action, full entry, review, execution help, adjustment, or Talent Review update.</p><p class="vi">Action, full entry, review, execution help, adjustment hoặc Talent Review update.</p></div>
+      <div class="fs"><div class="fn">1</div><h4>Current Role</h4><p class="en">Use your exact role title: Senior Accountant, Product Engineer, Recruiting Specialist...</p><p class="vi">Dùng đúng tên vai trò hiện tại, ví dụ: Senior Accountant, Product Engineer, Recruiting Specialist...</p></div>
+      <div class="fs"><div class="fn">2</div><h4>Target Role</h4><p class="en">Use your exact target role: TL of Accounting, Engineering Project Manager...</p><p class="vi">Dùng đúng vai trò mục tiêu, ví dụ: TL of Accounting, Engineering Project Manager...</p></div>
+      <div class="fs"><div class="fn">3</div><h4 class="en">Real challenge</h4><h4 class="vi">Vấn đề thực tế</h4><p class="en">Describe what you actually struggle with. Behavior-level context helps most.</p><p class="vi">Mô tả điều bạn đang gặp khó trong công việc. Ví dụ hành vi cụ thể sẽ giúp AI gợi ý sát hơn.</p></div>
+      <div class="fs"><div class="fn">4</div><h4 class="en">Needed output</h4><h4 class="vi">Kết quả cần nhận</h4><p class="en">Action, full entry, review, execution help, adjustment, or Talent Review update.</p><p class="vi">Ví dụ: action, full IDP entry, review, gợi ý triển khai, điều chỉnh action hoặc Talent Review update.</p></div>
     </div>
   </section>
 
@@ -432,7 +505,7 @@ Please help me create practical IDP actions that fit my current role and do not 
       <div class="mc">
         <div class="mh"><div class="mbg m1">Mode 1</div><div class="mn en">I need to create or improve my IDP</div><div class="mn vi">Tôi cần tạo hoặc cải thiện IDP</div><div class="mw">Planning Mode</div></div>
         <div class="mb">
-          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Starting IDP from scratch</span><span class="tg vi">Bắt đầu IDP từ đầu</span><span class="tg en">Creating new actions</span><span class="tg vi">Tạo actions mới</span><span class="tg en">Building full IDP Details</span><span class="tg vi">Build full IDP Details</span></div></div>
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Starting IDP from scratch</span><span class="tg vi">Bắt đầu IDP từ đầu</span><span class="tg en">Creating new actions</span><span class="tg vi">Tạo actions mới</span><span class="tg en">Building full IDP Details</span><span class="tg vi">Hoàn thiện full IDP Details</span></div></div>
           <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p1')">Copy</button></div><div class="pb">
 <div class="en" id="p1-en">Current Role: Recruiting Specialist
 Target Role: Team Leader of Recruitment
@@ -446,17 +519,17 @@ Please create 3 strong IDP actions.</div>
 <div class="vi" id="p1-vi">Current Role: Recruiting Specialist
 Target Role: Team Leader of Recruitment
 
-Gaps thực tế của mình:
-- công việc đã có nhiều stakeholder nhưng leadership visibility còn thấp
-- cách làm việc còn khá reactive
-- chưa có nhiều strategic ownership
+Những điểm mình muốn phát triển:
+- công việc đã làm việc với nhiều stakeholder nhưng mức độ thể hiện vai trò lãnh đạo chưa rõ
+- cách làm việc còn khá bị động, thường xử lý khi có yêu cầu
+- chưa thể hiện nhiều sự chủ động trong các vấn đề có tính chiến lược
 
-Hãy giúp mình tạo 3 IDP actions mạnh, thực tế và phù hợp với role hiện tại.</div>
+Hãy giúp mình tạo 3 IDP actions thực tế, cụ thể và phù hợp với vai trò hiện tại.</div>
 </div></div>
         </div>
         <div style="padding:0 17px 15px">
           <div class="full-ex">
-            <button class="fex-btn" onclick="toggleEx(this)">💡 <span class="en">See what a strong full IDP Details entry looks like</span><span class="vi">Xem ví dụ full IDP Details entry mạnh</span><span class="arr">▼</span></button>
+            <button class="fex-btn" onclick="toggleEx(this)">💡 <span class="en">See what a strong full IDP Details entry looks like</span><span class="vi">Xem ví dụ một IDP Details entry rõ và cụ thể</span><span class="arr">▼</span></button>
             <div class="fex-body">
               <div class="fex-block"><div class="lbl">Development Action</div><div class="val">Lead a structured hiring debrief session with the requesting HoD after each key recruitment cycle</div></div>
               <div class="fex-block"><div class="lbl">Development Goal</div><div class="val">Strengthen stakeholder management and structured communication by facilitating post-hiring reviews that improve future recruitment alignment</div></div>
@@ -470,9 +543,9 @@ Hãy giúp mình tạo 3 IDP actions mạnh, thực tế và phù hợp với ro
       </div>
 
       <div class="mc">
-        <div class="mh"><div class="mbg m2">Mode 2</div><div class="mn en">I already have an action, but it feels weak</div><div class="mn vi">Tôi đã có action nhưng thấy chưa mạnh</div><div class="mw">Quality Review Mode</div></div>
+        <div class="mh"><div class="mbg m2">Mode 2</div><div class="mn en">I already have an action, but it feels weak</div><div class="mn vi">Tôi đã có action nhưng muốn viết rõ hơn</div><div class="mw">Quality Review Mode</div></div>
         <div class="mb">
-          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Too broad</span><span class="tg vi">Quá rộng</span><span class="tg en">Generic or passive</span><span class="tg vi">Generic hoặc passive</span><span class="tg en">Looks like daily task</span><span class="tg vi">Giống task hàng ngày</span></div></div>
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Too broad</span><span class="tg vi">Quá rộng</span><span class="tg en">Generic or passive</span><span class="tg vi">Chung chung hoặc bị động</span><span class="tg en">Looks like daily task</span><span class="tg vi">Giống task hàng ngày</span></div></div>
           <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p2')">Copy</button></div><div class="pb">
 <div class="en" id="p2-en">Review this IDP action and make it stronger:
 
@@ -489,15 +562,15 @@ Action: Improve communication with other departments.
 Current Role: Procurement Specialist
 Target Role: Procurement Team Leader
 
-Action này đang hơi mơ hồ. Hãy giúp mình làm nó cụ thể hơn, có ownership hơn và gắn rõ hơn với target role.</div>
+Action này còn chung chung. Hãy giúp mình viết lại cụ thể hơn, thể hiện rõ trách nhiệm hơn và gắn với vai trò mục tiêu.</div>
 </div></div>
         </div>
       </div>
 
       <div class="mc">
-        <div class="mh"><div class="mbg m3">Mode 3</div><div class="mn en">I started an action, but I feel stuck</div><div class="mn vi">Tôi đã bắt đầu action nhưng đang bị stuck</div><div class="mw">Execution Coaching Mode</div></div>
+        <div class="mh"><div class="mbg m3">Mode 3</div><div class="mn en">I started an action, but I feel stuck</div><div class="mn vi">Tôi đã bắt đầu action nhưng đang bị vướng</div><div class="mw">Execution Coaching Mode</div></div>
         <div class="mb">
-          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Stuck during execution</span><span class="tg vi">Đang stuck</span><span class="tg en">Action becoming task work</span><span class="tg vi">Action thành task work</span><span class="tg en">Need visibility</span><span class="tg vi">Cần visibility</span></div></div>
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Stuck during execution</span><span class="tg vi">Đang bị vướng</span><span class="tg en">Action becoming task work</span><span class="tg vi">Action bị biến thành việc theo dõi task</span><span class="tg en">Need visibility</span><span class="tg vi">Cần thể hiện rõ hơn</span></div></div>
           <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p3')">Copy</button></div><div class="pb">
 <div class="en" id="p3-en">I already started this action:
 Lead monthly stakeholder sync for production planning improvement.
@@ -520,7 +593,7 @@ Hiện tại mình đã:
 - tạo một shared tracker
 
 Challenge của mình:
-Mình cảm thấy mình chỉ đang schedule meeting và tracking task, chưa thật sự thể hiện leadership.
+Mình cảm thấy mình mới chỉ đang sắp xếp cuộc họp và theo dõi đầu việc, chưa thật sự thể hiện vai trò lãnh đạo.
 
 Mình nên làm gì tiếp theo?
 
@@ -532,7 +605,7 @@ Target Role: Production Planning Team Leader</div>
       <div class="mc">
         <div class="mh"><div class="mbg m4">Mode 4</div><div class="mn en">My original action no longer works</div><div class="mn vi">Action ban đầu không còn phù hợp</div><div class="mw">Adjustment Mode</div></div>
         <div class="mb">
-          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Project paused</span><span class="tg vi">Project bị pause</span><span class="tg en">Work scope changed</span><span class="tg vi">Scope đổi</span><span class="tg en">Need replacement action</span><span class="tg vi">Cần action thay thế</span></div></div>
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Project paused</span><span class="tg vi">Project bị tạm dừng</span><span class="tg en">Work scope changed</span><span class="tg vi">Phạm vi công việc thay đổi</span><span class="tg en">Need replacement action</span><span class="tg vi">Cần action thay thế</span></div></div>
           <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p4')">Copy</button></div><div class="pb">
 <div class="en" id="p4-en">This action is no longer practical:
 Lead one cross-functional process improvement project.
@@ -548,20 +621,20 @@ Please help me revise the action without losing that development goal.</div>
 Lead one cross-functional process improvement project.
 
 Lý do:
-Project đã bị pause và mình chưa biết khi nào sẽ restart.
+Project đã bị tạm dừng và mình chưa biết khi nào sẽ bắt đầu lại.
 
 Development goal ban đầu:
 Strengthen structured problem-solving and cross-functional stakeholder handling.
 
-Hãy giúp mình revise action này mà vẫn giữ nguyên development goal ban đầu.</div>
+Hãy giúp mình điều chỉnh action này nhưng vẫn giữ đúng mục tiêu phát triển ban đầu.</div>
 </div></div>
         </div>
       </div>
 
       <div class="mc">
-        <div class="mh"><div class="mbg m5">Mode 5</div><div class="mn en">I need to show progress and readiness</div><div class="mn vi">Tôi cần thể hiện progress và readiness</div><div class="mw">Talent Review Mode</div></div>
+        <div class="mh"><div class="mbg m5">Mode 5</div><div class="mn en">I need to show progress and readiness</div><div class="mn vi">Tôi cần thể hiện tiến độ và mức độ sẵn sàng</div><div class="mw">Talent Review Mode</div></div>
         <div class="mb">
-          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Raw progress notes</span><span class="tg vi">Raw progress notes</span><span class="tg en">Talent Review prep</span><span class="tg vi">Chuẩn bị Talent Review</span><span class="tg en">Need impact narrative</span><span class="tg vi">Cần impact narrative</span></div></div>
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Ghi chú tiến độ ban đầu</span><span class="tg vi">Ghi chú tiến độ ban đầu</span><span class="tg en">Talent Review prep</span><span class="tg vi">Chuẩn bị Talent Review</span><span class="tg en">Need impact narrative</span><span class="tg vi">Cần diễn đạt rõ tác động</span></div></div>
           <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p5')">Copy</button></div><div class="pb">
 <div class="en" id="p5-en">Help me write a stronger Talent Review update.
 
@@ -577,18 +650,18 @@ Raw progress:
 I want to show capability growth and impact, not just list activities.
 
 Target Role: Team Leader of Talent Development</div>
-<div class="vi" id="p5-vi">Giúp mình viết Talent Review update mạnh hơn.
+<div class="vi" id="p5-vi">Giúp mình viết Talent Review update rõ và thuyết phục hơn.
 
 Action:
 Lead monthly stakeholder sync for IDP system improvement
 
-Raw progress:
+Ghi chú tiến độ:
 - đã tổ chức 2 buổi họp với HR và IT
 - đã tạo shared issue tracker
 - đã follow up 3 open items
 - đã chia sẻ 1 progress update với leader
 
-Mình muốn thể hiện capability growth và impact, không chỉ liệt kê hoạt động đã làm.
+Mình muốn thể hiện năng lực đã phát triển và tác động tạo ra, không chỉ liệt kê các việc đã làm.
 
 Target Role: Team Leader of Talent Development</div>
 </div></div>
@@ -604,25 +677,25 @@ Target Role: Team Leader of Talent Development</div>
   <section class="sec" id="better">
     <div class="sh"><div class="sn">4</div>
       <div class="st en">How to get better answers</div>
-      <div class="st vi">Cách để có câu trả lời tốt hơn</div>
+      <div class="st vi">Cách để AI trả lời sát hơn</div>
     </div>
     <div class="dd">
       <div class="ds">
         <h4>✅ <span class="en">Do this</span><span class="vi">Nên làm</span></h4>
         <ul class="cl">
-          <li>✅ <span class="en">Share your real work context: team size, authority, current work, constraints, and available opportunities.</span><span class="vi">Chia sẻ context thật: team size, authority, công việc hiện tại, giới hạn và cơ hội đang có.</span></li>
-          <li>✅ <span class="en">Push back when output is not strong enough.</span><span class="vi">Push lại khi output chưa đủ mạnh.</span></li>
-          <li>✅ <span class="en">Describe gaps as real behaviors, not only competency names.</span><span class="vi">Mô tả gaps theo behavior thật, không chỉ nêu tên competency.</span></li>
-          <li>✅ <span class="en">Use the output as a draft and validate with your Direct Leader or Mentor.</span><span class="vi">Dùng output như bản nháp và xác nhận với Direct Leader hoặc Mentor.</span></li>
+          <li>✅ <span class="en">Share your real work context: team size, authority, current work, constraints, and available opportunities.</span><span class="vi">Chia sẻ bối cảnh công việc thật: quy mô team, quyền hạn hiện tại, công việc đang làm, giới hạn và cơ hội có thể tận dụng.</span></li>
+          <li>✅ <span class="en">Push back when output is not strong enough.</span><span class="vi">Yêu cầu AI chỉnh lại nếu câu trả lời còn chung chung.</span></li>
+          <li>✅ <span class="en">Describe gaps as real behaviors, not only competency names.</span><span class="vi">Mô tả điểm cần phát triển bằng hành vi cụ thể, không chỉ nêu tên năng lực.</span></li>
+          <li>✅ <span class="en">Use the output as a draft and validate with your Direct Leader or Mentor.</span><span class="vi">Sử dụng gợi ý của AI như bản nháp và trao đổi lại với Direct Leader hoặc Mentor.</span></li>
         </ul>
       </div>
       <div class="dn">
         <h4>❌ <span class="en">Avoid this</span><span class="vi">Không nên làm</span></h4>
         <ul class="cl">
-          <li>❌ <span class="en">Very short prompts with no role, gap, or context.</span><span class="vi">Prompt quá ngắn, không có role, gap hoặc context.</span></li>
-          <li>❌ <span class="en">Only naming a competency without explaining the behavior.</span><span class="vi">Chỉ nêu tên competency mà không mô tả behavior.</span></li>
-          <li>❌ <span class="en">Pretending you have authority or project access you do not actually have.</span><span class="vi">Giả vờ có authority hoặc project access mà bạn chưa có.</span></li>
-          <li>❌ <span class="en">Accepting the first answer without checking realism and usefulness.</span><span class="vi">Chấp nhận câu trả lời đầu tiên mà không kiểm tra tính thực tế và hữu ích.</span></li>
+          <li>❌ <span class="en">Very short prompts with no role, gap, or context.</span><span class="vi">Prompt quá ngắn, không có vai trò, điểm cần phát triển hoặc bối cảnh công việc.</span></li>
+          <li>❌ <span class="en">Only naming a competency without explaining the behavior.</span><span class="vi">Chỉ nêu tên năng lực mà không mô tả hành vi cụ thể.</span></li>
+          <li>❌ <span class="en">Pretending you have authority or project access you do not actually have.</span><span class="vi">Đưa vào quyền hạn hoặc phạm vi dự án mà bạn thực tế chưa có.</span></li>
+          <li>❌ <span class="en">Accepting the first answer without checking realism and usefulness.</span><span class="vi">Dùng ngay câu trả lời đầu tiên mà chưa kiểm tra mức độ thực tế và phù hợp.</span></li>
         </ul>
       </div>
     </div>
@@ -637,12 +710,12 @@ Target Role: Team Leader of Talent Development</div>
       <div class="st vi">Nếu câu trả lời chưa đủ mạnh, hãy hỏi tiếp như sau</div>
     </div>
     <p class="subtxt en">The AI often improves significantly when you clarify what is missing. Use these follow-up prompts to strengthen the output.</p>
-    <p class="subtxt vi">AI thường cải thiện rất nhiều khi bạn nói rõ output đang thiếu gì. Dùng các follow-up prompts này để làm câu trả lời mạnh hơn.</p>
+    <p class="subtxt vi">Câu trả lời của AI thường tốt hơn khi bạn nói rõ phần nào chưa phù hợp. Có thể dùng các prompt dưới đây để yêu cầu AI chỉnh lại.</p>
     <div class="tg2">
-      <div class="tb"><div class="thead">💬 <span class="en">Make it practical</span><span class="vi">Làm thực tế hơn</span><button class="tcopy" onclick="copyPrompt('f1')">Copy</button></div><div class="tbody"><div class="en" id="f1-en">This still feels too generic. Make it more specific to my real work.</div><div class="vi" id="f1-vi">Câu trả lời này vẫn còn generic. Hãy làm nó cụ thể hơn theo công việc thực tế của mình.</div></div></div>
-      <div class="tb"><div class="thead">💬 <span class="en">Fix authority scope</span><span class="vi">Chỉnh theo authority thật</span><button class="tcopy" onclick="copyPrompt('f2')">Copy</button></div><div class="tbody"><div class="en" id="f2-en">I do not have authority to assign tasks. Please adjust the action based on peer coordination and stakeholder influence.</div><div class="vi" id="f2-vi">Mình không có authority để giao task. Hãy chỉnh action theo hướng peer coordination và stakeholder influence.</div></div></div>
-      <div class="tb"><div class="thead">💬 <span class="en">Increase leadership value</span><span class="vi">Tăng leadership value</span><button class="tcopy" onclick="copyPrompt('f3')">Copy</button></div><div class="tbody"><div class="en" id="f3-en">This sounds too operational. Make the leadership growth and visibility more clear.</div><div class="vi" id="f3-vi">Câu trả lời này vẫn nghe quá operational. Hãy làm rõ leadership growth và visibility hơn.</div></div></div>
-      <div class="tb"><div class="thead">💬 <span class="en">Control length</span><span class="vi">Rút gọn output</span><button class="tcopy" onclick="copyPrompt('f4')">Copy</button></div><div class="tbody"><div class="en" id="f4-en">Rewrite this as a concise IDP entry only. No explanation, no coaching note.</div><div class="vi" id="f4-vi">Hãy viết lại thành IDP entry ngắn gọn thôi. Không giải thích thêm, không coaching note.</div></div></div>
+      <div class="tb"><div class="thead">💬 <span class="en">Make it practical</span><span class="vi">Làm thực tế hơn</span><button class="tcopy" onclick="copyPrompt('f1')">Copy</button></div><div class="tbody"><div class="en" id="f1-en">This still feels too generic. Make it more specific to my real work.</div><div class="vi" id="f1-vi">Câu trả lời này vẫn còn chung chung. Hãy làm nó cụ thể hơn theo công việc thực tế của mình.</div></div></div>
+      <div class="tb"><div class="thead">💬 <span class="en">Fix authority scope</span><span class="vi">Chỉnh theo quyền hạn thực tế</span><button class="tcopy" onclick="copyPrompt('f2')">Copy</button></div><div class="tbody"><div class="en" id="f2-en">I do not have authority to assign tasks. Please adjust the action based on peer coordination and stakeholder influence.</div><div class="vi" id="f2-vi">Mình không có quyền giao task. Hãy chỉnh action theo hướng phối hợp với đồng nghiệp và tạo ảnh hưởng với stakeholder.</div></div></div>
+      <div class="tb"><div class="thead">💬 <span class="en">Increase leadership value</span><span class="vi">Làm rõ giá trị phát triển lãnh đạo</span><button class="tcopy" onclick="copyPrompt('f3')">Copy</button></div><div class="tbody"><div class="en" id="f3-en">This sounds too operational. Make the leadership growth and visibility more clear.</div><div class="vi" id="f3-vi">Câu trả lời này vẫn thiên về công việc vận hành. Hãy làm rõ năng lực lãnh đạo được phát triển và bằng chứng có thể quan sát được.</div></div></div>
+      <div class="tb"><div class="thead">💬 <span class="en">Control length</span><span class="vi">Rút gọn câu trả lời</span><button class="tcopy" onclick="copyPrompt('f4')">Copy</button></div><div class="tbody"><div class="en" id="f4-en">Rewrite this as a concise IDP entry only. No explanation, no coaching note.</div><div class="vi" id="f4-vi">Hãy viết lại thành một IDP entry ngắn gọn. Không cần giải thích thêm hoặc thêm ghi chú coaching.</div></div></div>
     </div>
   </section>
 
@@ -650,24 +723,24 @@ Target Role: Team Leader of Talent Development</div>
 
   <!-- SHORT REMINDER: LEADERSHIP READINESS -->
   <section class="notequote dark">
-    <div class="qtitle">🌱 <span class="en">Leadership readiness starts before the title</span><span class="vi">Leadership readiness bắt đầu trước khi có title</span></div>
+    <div class="qtitle">🌱 <span class="en">Leadership readiness starts before the title</span><span class="vi">Mức độ sẵn sàng lãnh đạo bắt đầu trước khi có chức danh</span></div>
     <p class="en">Many Talent Pool members do not yet have direct reports or formal authority. That is normal. At this stage, leadership is shown through how you influence stakeholders, coordinate across teams, communicate proactively, create structure, and take ownership of outcomes in your current role.</p>
-    <p class="vi">Nhiều Talent Pool members hiện chưa có direct reports hoặc formal authority. Điều này hoàn toàn bình thường. Ở giai đoạn này, leadership được thể hiện qua cách bạn influence stakeholders, coordinate cross-team, communicate chủ động, tạo structure và own outcomes trong role hiện tại.</p>
+    <p class="vi">Nhiều Talent Pool members hiện chưa có direct reports hoặc quyền hạn chính thức. Điều này hoàn toàn bình thường. Ở giai đoạn này, năng lực lãnh đạo được thể hiện qua cách bạn tạo ảnh hưởng với stakeholder, phối hợp với các team liên quan, chủ động giao tiếp, tạo cấu trúc làm việc rõ ràng và chịu trách nhiệm với kết quả trong vai trò hiện tại.</p>
   </section>
 
   <hr class="dv">
 
   <!-- QUALITY -->
   <section class="sec" id="quality">
-    <div class="sh"><div class="sn">9</div>
+    <div class="sh"><div class="sn">5</div>
       <div class="st en">What makes a strong IDP action?</div>
-      <div class="st vi">Điều gì tạo nên một IDP action mạnh?</div>
+      <div class="st vi">Một IDP action tốt cần có gì?</div>
     </div>
     <div class="qg">
       <div class="qi"><h5>🎯 <span class="en">Specific</span><span class="vi">Cụ thể</span></h5><span class="qgood">Lead monthly stakeholder sync for inventory reporting improvement</span><span class="qbad">❌ Improve communication</span></div>
       <div class="qi"><h5>💼 <span class="en">Real work-based</span><span class="vi">Bám công việc thật</span></h5><span class="qgood">Design debrief format and run post-hiring review with HoD</span><span class="qbad">❌ Invented project with no real anchor</span></div>
-      <div class="qi"><h5>🙋 <span class="en">Ownership verb</span><span class="vi">Có ownership</span></h5><span class="qgood">Lead · Design · Facilitate · Present · Propose · Implement · Own</span><span class="qbad">❌ Join · Support · Attend · Assist</span></div>
-      <div class="qi"><h5>👁️ <span class="en">Visible evidence</span><span class="vi">Evidence visible</span></h5><span class="qgood">Deck · tracker · summary · feedback record · decision note</span><span class="qbad">❌ Gained new knowledge</span></div>
+      <div class="qi"><h5>🙋 <span class="en">Ownership verb</span><span class="vi">Rõ trách nhiệm</span></h5><span class="qgood">Lead · Design · Facilitate · Present · Propose · Implement · Own</span><span class="qbad">❌ Join · Support · Attend · Assist</span></div>
+      <div class="qi"><h5>👁️ <span class="en">Visible evidence</span><span class="vi">Bằng chứng rõ ràng</span></h5><span class="qgood">Deck · tracker · summary · feedback record · decision note</span><span class="qbad">❌ Gained new knowledge</span></div>
       <div class="qi"><h5>💪 <span class="en">Stretching but realistic</span><span class="vi">Thử thách nhưng khả thi</span></h5><span class="qgood">Slightly uncomfortable but executable in your role</span><span class="qbad">❌ Lead company-wide transformation</span></div>
       <div class="qi"><h5>🔗 <span class="en">Target role-linked</span><span class="vi">Gắn target role</span></h5><span class="qgood">Builds a capability needed for the target role</span><span class="qbad">❌ Could apply to any role</span></div>
     </div>
@@ -675,13 +748,13 @@ Target Role: Team Leader of Talent Development</div>
       <div class="ni">⚠️</div>
       <div>
         <p class="en"><strong>Push back when you see these warning signs in the AI output:</strong></p>
-        <p class="vi"><strong>Push lại khi thấy các dấu hiệu này trong AI output:</strong></p>
+        <p class="vi"><strong>Hãy yêu cầu AI chỉnh lại nếu câu trả lời có các dấu hiệu sau:</strong></p>
         <div class="wts">
-          <span class="wt en">⚠️ Generic wording</span><span class="wt vi">⚠️ Wording generic</span>
-          <span class="wt en">⚠️ Only coordination / tracking</span><span class="wt vi">⚠️ Chỉ coordination / tracking</span>
-          <span class="wt en">⚠️ Requires authority you do not have</span><span class="wt vi">⚠️ Cần authority bạn chưa có</span>
+          <span class="wt en">⚠️ Generic wording</span><span class="wt vi">⚠️ Câu chữ chung chung</span>
+          <span class="wt en">⚠️ Only coordination / tracking</span><span class="wt vi">⚠️ Chỉ dừng ở phối hợp / theo dõi task</span>
+          <span class="wt en">⚠️ Requires authority you do not have</span><span class="wt vi">⚠️ Yêu cầu quyền hạn bạn chưa có</span>
           <span class="wt en">⚠️ Too broad</span><span class="wt vi">⚠️ Quá rộng</span>
-          <span class="wt en">⚠️ Not paste-ready</span><span class="wt vi">⚠️ Không paste-ready</span>
+          <span class="wt en">⚠️ Not paste-ready</span><span class="wt vi">⚠️ Chưa thể copy vào IDP ngay</span>
         </div>
       </div>
     </div>
@@ -693,26 +766,26 @@ Target Role: Team Leader of Talent Development</div>
   <section class="sec" id="talentreview">
     <div class="sh"><div class="sn">6</div>
       <div class="st en">Preparing stronger Talent Review content</div>
-      <div class="st vi">Chuẩn bị nội dung Talent Review mạnh hơn</div>
+      <div class="st vi">Chuẩn bị nội dung Talent Review rõ và thuyết phục hơn</div>
     </div>
     <div class="bag" style="margin-top:0;margin-bottom:14px">
       <div class="bb bad">
-        <div class="bl">❌ <span class="en">Weak update — activities only</span><span class="vi">Update yếu — chỉ liệt kê việc đã làm</span></div>
+        <div class="bl">❌ <span class="en">Weak update — activities only</span><span class="vi">Update chưa tốt — chỉ liệt kê việc đã làm</span></div>
         <code>– attended meetings<br>– followed up on tasks<br>– created a tracker<br>– joined the project</code>
       </div>
       <div class="bb good">
-        <div class="bl">✅ <span class="en">Strong update — capability + impact</span><span class="vi">Update mạnh — capability + impact</span></div>
+        <div class="bl">✅ <span class="en">Strong update — capability + impact</span><span class="vi">Update tốt — thể hiện năng lực và tác động</span></div>
         <code>→ Built a structured follow-up rhythm across two teams<br>→ Improved visibility of open issues<br>→ Shifted from task coordination to ownership of outcomes<br>→ Communicated progress proactively to leader before being asked</code>
       </div>
     </div>
     <p class="subtxt en">A strong Talent Review update should answer all five questions:</p>
-    <p class="subtxt vi">Một Talent Review update mạnh nên trả lời được 5 câu hỏi:</p>
+    <p class="subtxt vi">Một Talent Review update tốt nên trả lời được 5 câu hỏi:</p>
     <div class="trg">
       <div class="trq"><div class="trn">1</div><p class="en">What did I do?</p><p class="vi">Tôi đã làm gì?</p></div>
-      <div class="trq"><div class="trn">2</div><p class="en">What did I achieve or deliver?</p><p class="vi">Tôi đã đạt / deliver được gì?</p></div>
-      <div class="trq"><div class="trn">3</div><p class="en">What capability did I develop?</p><p class="vi">Tôi phát triển capability gì?</p></div>
-      <div class="trq"><div class="trn">4</div><p class="en">What impact did I create?</p><p class="vi">Tôi tạo ra impact gì?</p></div>
-      <div class="trq"><div class="trn">5</div><p class="en">Why does this show readiness?</p><p class="vi">Điều này thể hiện readiness như thế nào?</p></div>
+      <div class="trq"><div class="trn">2</div><p class="en">What did I achieve or deliver?</p><p class="vi">Tôi đã đạt được hoặc hoàn thành điều gì?</p></div>
+      <div class="trq"><div class="trn">3</div><p class="en">What capability did I develop?</p><p class="vi">Tôi đã phát triển năng lực nào?</p></div>
+      <div class="trq"><div class="trn">4</div><p class="en">What impact did I create?</p><p class="vi">Tôi đã tạo ra tác động gì?</p></div>
+      <div class="trq"><div class="trn">5</div><p class="en">Why does this show readiness?</p><p class="vi">Điều này thể hiện mức độ sẵn sàng như thế nào?</p></div>
     </div>
   </section>
 
@@ -722,7 +795,7 @@ Target Role: Team Leader of Talent Development</div>
   <section class="sec" id="templates">
     <div class="sh"><div class="sn">7</div>
       <div class="st en">Prompt templates — copy and use</div>
-      <div class="st vi">Prompt templates — copy và dùng ngay</div>
+      <div class="st vi">Prompt templates — copy và sử dụng</div>
     </div>
     <div class="tg2">
       <div class="tb"><div class="thead">🏗️ <span class="en">Create IDP actions</span><span class="vi">Tạo IDP actions</span><button class="tcopy" onclick="copyBlock('t1')">Copy</button></div><div class="tbody" id="t1">Current Role:
@@ -752,7 +825,7 @@ Target Role:
 
 What feels weak:
 </div></div>
-      <div class="tb"><div class="thead">🎯 <span class="en">Execution coaching</span><span class="vi">Coaching thực thi</span><button class="tcopy" onclick="copyBlock('t4')">Copy</button></div><div class="tbody" id="t4">I already started this action:
+      <div class="tb"><div class="thead">🎯 <span class="en">Execution coaching</span><span class="vi">Hỗ trợ triển khai</span><button class="tcopy" onclick="copyBlock('t4')">Copy</button></div><div class="tbody" id="t4">I already started this action:
 
 So far:
 -
@@ -793,23 +866,23 @@ Target Role:</div></div>
   <section class="sec" id="submit">
     <div class="sh"><div class="sn">8</div>
       <div class="st en">Before you submit to the IDP system</div>
-      <div class="st vi">Trước khi submit vào IDP system</div>
+      <div class="st vi">Trước khi gửi vào IDP system</div>
     </div>
     <p class="subtxt en">Use this checklist before copying AI output into the IDP system.</p>
-    <p class="subtxt vi">Dùng checklist này trước khi copy output của AI vào IDP system.</p>
+    <p class="subtxt vi">Dùng checklist này trước khi copy nội dung do AI gợi ý vào IDP system.</p>
     <div class="checkgrid">
-      <div class="checkitem"><div class="ck">✓</div><p class="en">Development Action is short, one-line, and not overloaded with execution details.</p><p class="vi">Development Action ngắn, một dòng, không chứa quá nhiều execution details.</p></div>
-      <div class="checkitem"><div class="ck">✓</div><p class="en">Final IDP fields are in English, even if you chat with the AI in Vietnamese.</p><p class="vi">Các IDP fields cuối cùng bằng tiếng Anh, kể cả khi bạn chat bằng tiếng Việt.</p></div>
-      <div class="checkitem"><div class="ck">✓</div><p class="en">Learning Type uses one exact system value only: 70 - Learning by Doing, 20 - Learning through Others, or 10 - Formal Learning.</p><p class="vi">Learning Type chỉ dùng một system value chính xác: 70 - Learning by Doing, 20 - Learning through Others, hoặc 10 - Formal Learning.</p></div>
-      <div class="checkitem"><div class="ck">✓</div><p class="en">The action is realistic for your current authority level and work access.</p><p class="vi">Action phù hợp với authority level và work access hiện tại của bạn.</p></div>
-      <div class="checkitem"><div class="ck">✓</div><p class="en">Evidence is trackable: notes, deck, tracker, feedback, summary, or deliverable.</p><p class="vi">Evidence track được: notes, deck, tracker, feedback, summary hoặc deliverable.</p></div>
-      <div class="checkitem"><div class="ck">✓</div><p class="en">Your Direct Leader or Mentor has reviewed or validated the direction.</p><p class="vi">Direct Leader hoặc Mentor đã review / validate hướng phát triển.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Development Action is short, one-line, and not overloaded with execution details.</p><p class="vi">Development Action ngắn, gọn trong một dòng và không chứa quá nhiều chi tiết triển khai.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Final IDP fields are in English, even if you chat with the AI in Vietnamese.</p><p class="vi">Các IDP fields cuối cùng nên được viết bằng tiếng Anh, kể cả khi bạn trao đổi với AI bằng tiếng Việt.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Learning Type uses one exact system value only: 70 - Learning by Doing, 20 - Learning through Others, or 10 - Formal Learning.</p><p class="vi">Learning Type chỉ dùng một trong các system value chính xác: 70 - Learning by Doing, 20 - Learning through Others, hoặc 10 - Formal Learning.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">The action is realistic for your current authority level and work access.</p><p class="vi">Action phù hợp với quyền hạn và phạm vi công việc hiện tại của bạn.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Evidence is trackable: notes, deck, tracker, feedback, summary, or deliverable.</p><p class="vi">Có bằng chứng theo dõi được, ví dụ: notes, deck, tracker, feedback, summary hoặc deliverable.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Your Direct Leader or Mentor has reviewed or validated the direction.</p><p class="vi">Direct Leader hoặc Mentor đã review / xác nhận hướng phát triển.</p></div>
     </div>
     <div class="notice" style="margin-top:14px;margin-bottom:0">
       <div class="ni">🌐</div>
       <div>
         <p class="en"><strong>Language Tip:</strong> You may chat with the AI in Vietnamese or English. However, the final IDP fields should be in English: Development Action, Development Goal, Development Area, Learning Type, Duration, Timeline, and Evidence.</p>
-        <p class="vi"><strong>Language Tip:</strong> Bạn có thể chat với AI bằng tiếng Việt hoặc tiếng Anh. Tuy nhiên, các IDP fields cuối cùng nên bằng tiếng Anh: Development Action, Development Goal, Development Area, Learning Type, Duration, Timeline và Evidence.</p>
+        <p class="vi"><strong>Language Tip:</strong> Bạn có thể trao đổi với AI bằng tiếng Việt hoặc tiếng Anh. Tuy nhiên, các IDP fields cuối cùng nên được viết bằng tiếng Anh: Development Action, Development Goal, Development Area, Learning Type, Duration, Timeline và Evidence.</p>
       </div>
     </div>
   </section>
@@ -819,7 +892,7 @@ Target Role:</div></div>
   <div class="notequote dark">
     <div class="qtitle">🌟 <span class="en">Final reminder</span><span class="vi">Lời nhắc cuối</span></div>
     <p class="en">Use the IDP AI Coach as a development thinking partner. Bring real context, challenge generic answers, and validate the final direction with your Direct Leader or Mentor. The best IDP actions are realistic, visible, and connected to how you are building leadership readiness today.</p>
-    <p class="vi">Hãy dùng IDP AI Coach như một development thinking partner. Cung cấp context thật, challenge những câu trả lời còn generic và validate hướng cuối cùng với Direct Leader hoặc Mentor. IDP actions tốt nhất là realistic, visible và gắn với cách bạn đang xây dựng leadership readiness hôm nay.</p>
+    <p class="vi">Hãy sử dụng IDP AI Coach như một công cụ hỗ trợ bạn suy nghĩ về hướng phát triển. Khi sử dụng, hãy cung cấp bối cảnh công việc thực tế, yêu cầu AI chỉnh lại nếu câu trả lời còn chung chung, và trao đổi với Direct Leader hoặc Mentor trước khi chốt hướng IDP. Một IDP action tốt nên thực tế, có bằng chứng theo dõi được và thể hiện rõ năng lực bạn đang phát triển cho vai trò mục tiêu.</p>
     <div class="final-cta hero-actions" style="margin-top:16px">
       <a href="https://teams.microsoft.com/l/app/?source=app-details-dialog&sharedAppResource=TaosSharedApp&titleId=T_0b95707d-bab9-d7a9-d7d8-36d320dc5cc4&threadId=19%3A51e5796c-627d-420f-b173-754fe3b016a3_e3a3eafb-d6c2-4525-bae3-bbf8311a5a02%40unq.gbl.spaces" target="_blank" rel="noopener noreferrer" class="hero-cta">
         <img class="btn-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Microsoft_Office_Teams_%282025%E2%80%93present%29.svg/3840px-Microsoft_Office_Teams_%282025%E2%80%93present%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Microsoft Teams logo">
@@ -897,8 +970,8 @@ function getStarterPrompt(){
   if(isViMode()){
     return `Current Role:
 Target Role:
-Challenge hiện tại của mình là:
-Hãy giúp mình tạo IDP actions thực tế và phù hợp với work context hiện tại.`;
+Vấn đề hiện tại của mình là:
+Hãy giúp mình tạo IDP actions thực tế và phù hợp với bối cảnh công việc hiện tại.`;
   }
   return `Current Role:
 Target Role:
@@ -910,13 +983,19 @@ function getPracticalStarterPrompt(){
   if(isViMode()){
     return `Current Role: Senior IT Specialist
 Target Role: Team Leader of IT
-Challenge hiện tại của mình là: Mình thường tự xử lý technical issues một mình, nhưng mình muốn build leadership readiness bằng cách coordinate tốt hơn với stakeholders và làm cho work của mình visible hơn.
-Hãy giúp mình tạo IDP actions thực tế, phù hợp với role hiện tại và không yêu cầu direct reports.`;
+Vấn đề hiện tại của mình là: Mình thường tự xử lý technical issues một mình, nhưng mình muốn phát triển năng lực lãnh đạo bằng cách phối hợp tốt hơn với stakeholders và thể hiện rõ hơn kết quả công việc của mình.
+Hãy giúp mình tạo IDP actions thực tế, phù hợp với vai trò hiện tại và không yêu cầu direct reports.`;
   }
   return `Current Role: Senior IT Specialist
 Target Role: Team Leader of IT
 My current challenge is: I usually solve technical issues by myself, but I want to build leadership readiness by coordinating better with stakeholders and making my work more visible.
 Please help me create practical IDP actions that fit my current role and do not require direct reports.`;
+}
+
+
+const params = new URLSearchParams(window.location.search);
+if(params.get('embed') === '1'){
+  document.body.classList.add('embed-mode');
 }
 
 setLang('en');
