@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDP AI Coach – Talent Pool User Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#F68C2C;--orange-dark:#E67A1A;--orange-light:#FFF4E8;--orange-mid:#FFE0B8;
+  --navy:#1E2340;--navy2:#2C3158;--navy3:#374151;
+  --text:#1A1A2E;--muted:#6B7280;--subtle:#9CA3AF;
+  --surface:#FFFFFF;--bg:#F8F7F4;--border:#E8E4DC;
+  --green:#16A34A;--gbg:#DCFCE7;--gborder:#BBF7D0;
+  --red:#DC2626;--rbg:#FEE2E2;--rborder:#FECACA;
+  --blue:#2563EB;--bbg:#DBEAFE;--bborder:#BFDBFE;
+  --teal:#0F766E;--purple:#7C3AED;--amber:#B45309;
+  --shadow:0 10px 30px rgba(30,35,64,.08);
+  --shadow2:0 16px 45px rgba(30,35,64,.12);
+  --r:12px;--rl:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.65}
+a{color:inherit}
+
+/* LANG BAR */
+.topbar{background:var(--navy);padding:10px 40px;display:flex;align-items:center;justify-content:space-between;gap:14px;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.08)}
+.brand-mini{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.72);font-size:12px;font-weight:700;letter-spacing:.2px}
+.brand-dot{width:8px;height:8px;background:var(--orange);border-radius:99px}
+.lang-wrap{display:flex;align-items:center;justify-content:flex-end;gap:7px}
+.lang-label{font-size:10px;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.7px;margin-right:3px}
+.lb{padding:5px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.18);background:transparent;color:rgba(255,255,255,.55);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+.lb.on{background:var(--orange);border-color:var(--orange);color:#fff}
+.lb:hover:not(.on){background:rgba(255,255,255,.07);color:#fff}
+
+/* HERO */
+.hero{background:radial-gradient(circle at top right,rgba(246,140,44,.16),transparent 35%),linear-gradient(135deg,var(--navy),#151934);padding:52px 40px 44px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-90px;right:-80px;width:390px;height:390px;background:var(--orange);opacity:.07;border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-70px;left:18%;width:280px;height:280px;background:var(--orange);opacity:.045;border-radius:50%}
+.hi{max-width:980px;margin:0 auto;display:grid;grid-template-columns:96px 1fr;align-items:center;gap:26px;position:relative;z-index:1}
+.hero-logo{width:96px;height:96px;flex-shrink:0;border-radius:22px;overflow:hidden;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:35px;box-shadow:0 18px 40px rgba(0,0,0,.2)}
+.hero-logo img{width:96px;height:96px;object-fit:cover;display:block}
+.hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(246,140,44,.16);border:1px solid rgba(246,140,44,.34);color:#FFB46C;font-size:10px;font-weight:800;padding:4px 11px;border-radius:20px;margin-bottom:9px;text-transform:uppercase;letter-spacing:.7px}
+.hero h1{font-size:30px;font-weight:800;color:#fff;letter-spacing:-.7px;margin-bottom:5px;line-height:1.18}
+.hero h1 em{color:var(--orange);font-style:normal}
+.hero-sub{font-size:13.5px;color:rgba(255,255,255,.66);margin-bottom:18px;max-width:680px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+.hero-cta,.hero-secondary{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;padding:10px 18px;border-radius:10px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:inherit}
+.hero-cta{background:var(--orange);color:#fff}
+.hero-cta:hover{background:var(--orange-dark);transform:translateY(-1px)}
+.hero-secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.86)}
+.hero-secondary:hover{background:rgba(255,255,255,.13);transform:translateY(-1px)}
+.hero-cta svg,.hero-secondary svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.btn-logo{width:19px;height:19px;object-fit:contain;display:block;flex-shrink:0;border-radius:4px}
+.hero-cta .btn-logo{background:rgba(255,255,255,.96);padding:2px}
+.hero-secondary .btn-logo{background:rgba(255,255,255,.9);padding:2px}
+
+/* NAV */
+.nav{background:rgba(248,247,244,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:45px;z-index:150}
+.navin{max-width:980px;margin:0 auto;padding:9px 40px;display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}
+.navin::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:#4B5563;background:#fff;border:1px solid var(--border);padding:6px 11px;border-radius:999px;font-size:11px;font-weight:700;transition:all .15s}
+.nav a:hover{border-color:var(--orange-mid);background:var(--orange-light);color:var(--orange-dark)}
+
+/* LAYOUT */
+.wrap{max-width:980px;margin:0 auto;padding:28px 40px 64px}
+
+/* NOTICE */
+.notice{background:var(--orange-light);border:1.5px solid var(--orange-mid);border-left:4px solid var(--orange);border-radius:var(--r);padding:14px 17px;margin-bottom:26px;display:flex;gap:11px;align-items:flex-start}
+.ni{font-size:17px;flex-shrink:0;margin-top:1px}
+.notice p{font-size:12.5px;color:#92400E;line-height:1.65}
+.notice strong{color:var(--orange-dark)}
+
+
+/* SIMPLE NOTE / QUOTE BLOCKS */
+.notequote{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:var(--rl);padding:16px 18px;margin-bottom:24px;box-shadow:var(--shadow)}
+.notequote .qtitle{font-size:12.5px;font-weight:800;color:var(--navy);margin-bottom:6px;display:flex;gap:7px;align-items:center}
+.notequote p{font-size:12.5px;color:var(--muted);line-height:1.75;margin:0}
+.notequote strong{color:var(--navy)}
+.notequote.emphasis{background:var(--orange-light);border-color:var(--orange-mid);border-left-color:var(--orange);box-shadow:none}
+.notequote.dark{background:var(--navy);border-color:rgba(255,255,255,.08);border-left-color:var(--orange);box-shadow:none}
+.notequote.dark .qtitle{color:var(--orange)}
+.notequote.dark p{color:rgba(255,255,255,.72)}
+
+/* SECTION */
+.sec{margin-bottom:34px;scroll-margin-top:105px}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:15px}
+.sn{width:29px;height:29px;background:var(--orange);color:#fff;border-radius:8px;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 18px rgba(246,140,44,.28)}
+.st{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.25px}
+.subtxt{font-size:12.7px;color:var(--muted);margin-bottom:13px;max-width:760px}
+
+/* QUICK START */
+.qs{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+.qspanel{background:#fff;border:1px solid var(--border);border-radius:var(--rl);padding:18px;box-shadow:var(--shadow)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.step{background:#FAFAFA;border:1px solid #ECE7DF;border-radius:12px;padding:13px}
+.stepn{width:24px;height:24px;border-radius:7px;background:var(--navy);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.step h4{font-size:12px;color:var(--navy);margin-bottom:4px}
+.step p{font-size:11.5px;color:var(--muted);line-height:1.55}
+.starter{background:linear-gradient(180deg,var(--orange-light),#fff);border:1px solid var(--orange-mid);border-radius:var(--rl);padding:16px;box-shadow:var(--shadow)}
+.starter h4{font-size:13px;color:var(--orange-dark);margin-bottom:8px}
+.copyrow{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px}
+.copybtn{border:1px solid var(--orange-mid);background:#fff;color:var(--orange-dark);font-family:inherit;font-weight:800;font-size:10.5px;border-radius:999px;padding:5px 9px;cursor:pointer;transition:.15s}
+.copybtn:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+.promptbox{background:#fff;border:1px solid var(--orange-mid);border-radius:10px;padding:11px 12px;font-family:'Courier New',monospace;font-size:11px;color:#374151;line-height:1.85;white-space:pre-wrap}
+
+/* USE CASE GRID */
+.ucg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.uc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:15px 16px;border-top:3px solid var(--orange);box-shadow:0 8px 20px rgba(30,35,64,.04)}
+.uc-ic{font-size:20px;margin-bottom:6px}
+.uc-t{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.uc-d{font-size:11.5px;color:var(--muted);line-height:1.5}
+
+/* BEFORE / AFTER */
+.bag{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.bb{border-radius:var(--r);padding:14px 16px}
+.bb.bad{background:var(--rbg);border:1px solid var(--rborder)}
+.bb.good{background:var(--gbg);border:1px solid var(--gborder)}
+.bl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;display:flex;align-items:center;gap:4px}
+.bb.bad .bl{color:var(--red)}.bb.good .bl{color:var(--green)}
+.bb code{font-family:'Courier New',monospace;font-size:11.5px;line-height:1.85;display:block}
+.bb.bad code{color:#991B1B}.bb.good code{color:#166534}
+
+/* FORMULA */
+.fg{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.fs{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 15px;box-shadow:0 8px 18px rgba(30,35,64,.035)}
+.fn{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;background:var(--navy);color:#fff;border-radius:6px;font-size:10px;font-weight:800;margin-bottom:7px}
+.fs h4{font-size:10.5px;font-weight:800;color:var(--navy);margin-bottom:4px;text-transform:uppercase;letter-spacing:.45px}
+.fs p{font-size:11.4px;color:var(--muted);line-height:1.55}
+
+/* MODE CARDS */
+.mode-grid{display:grid;grid-template-columns:1fr;gap:11px}
+.mc{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:0 9px 24px rgba(30,35,64,.045)}
+.mh{padding:12px 17px;display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.mbg{font-size:10px;font-weight:800;padding:3px 9px;border-radius:7px;text-transform:uppercase;letter-spacing:.5px;color:#fff;white-space:nowrap}
+.m1{background:var(--orange)}.m2{background:var(--navy3)}.m3{background:var(--teal)}.m4{background:var(--amber)}.m5{background:var(--purple)}
+.mn{font-size:14px;font-weight:800;color:var(--navy)}
+.mw{font-size:11px;color:var(--muted);font-style:italic;margin-left:auto}
+.mb{padding:14px 17px;display:grid;grid-template-columns:.8fr 1.2fr;gap:14px}
+.mcol h5{font-size:10px;font-weight:800;color:var(--subtle);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
+.tl{display:flex;flex-wrap:wrap;gap:5px}
+.tg{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600;background:#F3F4F6;color:#374151;border:1px solid #E5E7EB}
+.pb{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:10px 12px;font-family:'Courier New',monospace;font-size:11px;color:#374151;line-height:1.85;position:relative;white-space:normal;word-break:normal;overflow-wrap:break-word}
+.pb > .en,.pb > .vi{white-space:pre-wrap;margin:0;padding:0}
+.pb strong{color:var(--navy3);font-weight:800}
+
+/* FULL EXAMPLE — collapsible */
+.full-ex{border:1px solid var(--orange-mid);background:var(--orange-light);border-radius:10px;margin-top:10px;overflow:hidden}
+.fex-btn{width:100%;background:none;border:none;padding:10px 14px;text-align:left;font-family:inherit;font-size:11.5px;font-weight:800;color:var(--orange-dark);cursor:pointer;display:flex;align-items:center;gap:7px}
+.fex-btn .arr{font-size:10px;transition:transform .2s;margin-left:auto}
+.fex-body{display:none;padding:0 14px 13px;border-top:1px solid var(--orange-mid)}
+.fex-body.open{display:block}
+.fex-block{margin-top:10px}
+.fex-block .lbl{font-size:10px;font-weight:800;color:var(--orange-dark);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.fex-block .val{font-size:12px;color:#374151;line-height:1.7;background:#fff;border-radius:7px;padding:8px 10px;border:1px solid var(--orange-mid)}
+
+/* DOS DONTS */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.ds,.dn{border-radius:var(--rl);padding:16px 17px}
+.ds{background:var(--gbg);border:1px solid var(--gborder)}
+.dn{background:var(--rbg);border:1px solid var(--rborder)}
+.ds h4{color:#166534;font-size:12.5px;margin-bottom:9px;display:flex;gap:5px;align-items:center}
+.dn h4{color:#991B1B;font-size:12.5px;margin-bottom:9px;display:flex;gap:5px;align-items:center}
+.cl{list-style:none;display:flex;flex-direction:column;gap:8px}
+.cl li{font-size:12px;display:flex;gap:7px;align-items:flex-start;line-height:1.5}
+.ds .cl li{color:#166534}.dn .cl li{color:#991B1B}
+
+/* QUALITY */
+.qg{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.qi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:13px 14px;border-top:3px solid var(--orange);box-shadow:0 8px 18px rgba(30,35,64,.035)}
+.qi h5{font-size:11.5px;font-weight:800;color:var(--navy);margin-bottom:7px}
+.qgood{font-size:11px;color:var(--green);background:var(--gbg);padding:4px 8px;border-radius:5px;margin-bottom:6px;display:block;font-family:monospace;line-height:1.6}
+.qbad{font-size:11px;color:var(--subtle);text-decoration:line-through;display:block;font-family:monospace;line-height:1.6}
+
+/* WARN TAGS */
+.wts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.wt{background:#FEF3C7;border:1px solid #FDE68A;color:#92400E;font-size:11px;padding:3px 9px;border-radius:20px;font-weight:600}
+
+/* TALENT REVIEW */
+.trg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trq{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;display:flex;gap:9px;align-items:flex-start;box-shadow:0 8px 18px rgba(30,35,64,.03)}
+.trn{width:22px;height:22px;background:var(--orange-light);border:1px solid var(--orange-mid);border-radius:6px;font-size:10px;font-weight:800;color:var(--orange-dark);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.trq p{font-size:12px;color:var(--navy);font-weight:700;line-height:1.4}
+
+/* TEMPLATES */
+.tg2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tb{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:0 9px 22px rgba(30,35,64,.04)}
+.thead{background:var(--navy);padding:9px 13px;font-size:11.5px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.thead span.accent{color:var(--orange)}
+.tbody{padding:12px 13px;font-family:'Courier New',monospace;font-size:11px;color:#374151;line-height:1.9;background:#FAFAFA;white-space:pre-wrap}
+.tcopy{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;font-size:9.5px;padding:4px 8px;font-family:inherit;font-weight:800;cursor:pointer}
+.tcopy:hover{background:var(--orange);border-color:var(--orange)}
+
+/* INSIGHT */
+.ins{background:linear-gradient(135deg,var(--navy),#151934);border-radius:var(--rl);padding:21px 22px;margin-bottom:10px;box-shadow:var(--shadow2);position:relative;overflow:hidden}
+.ins::after{content:'';position:absolute;right:-65px;top:-65px;width:180px;height:180px;background:var(--orange);opacity:.08;border-radius:50%}
+.ins h4{font-size:14px;font-weight:800;color:var(--orange);margin-bottom:8px;display:flex;align-items:center;gap:7px;position:relative;z-index:1}
+.ins p{font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.7;position:relative;z-index:1}
+.ins ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:6px;position:relative;z-index:1}
+.ins ul li{font-size:12px;color:rgba(255,255,255,.66);display:flex;gap:7px;line-height:1.5}
+.ins ul li::before{content:'→';color:var(--orange);flex-shrink:0}
+
+hr.dv{border:none;border-top:1px solid var(--border);margin:28px 0}
+
+/* SUBMIT CHECKLIST */
+.checkgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checkitem{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;display:flex;gap:9px;align-items:flex-start}
+.ck{width:22px;height:22px;border-radius:99px;background:var(--gbg);color:var(--green);border:1px solid var(--gborder);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;flex-shrink:0}
+.checkitem p{font-size:12.2px;color:#374151;line-height:1.55;font-weight:600}
+
+/* FOOTER */
+.foot{background:var(--navy);padding:28px 40px;text-align:center}
+.foot img{height:24px;opacity:.68;margin-bottom:7px;display:block;margin-left:auto;margin-right:auto}
+.foot p{font-size:11.5px;color:rgba(255,255,255,.34)}
+.foot strong{color:rgba(255,255,255,.58)}
+.foot .final-cta{margin-top:14px}
+
+/* TOAST */
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:9px 14px;border-radius:999px;font-size:12px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:300;box-shadow:var(--shadow2)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* LANG VISIBILITY */
+.en{display:block}.vi{display:none}
+body.lv .en{display:none}body.lv .vi{display:block}
+
+@media(max-width:800px){
+  .fg{grid-template-columns:1fr 1fr}
+  .qs{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .wrap{padding:18px 16px 52px}
+  .ucg,.fg,.bag,.dd,.tg2,.qg,.mb,.trg,.checkgrid{grid-template-columns:1fr}
+  .hi{grid-template-columns:1fr;text-align:center}
+  .hero-logo{margin:0 auto}
+  .mw{display:none}
+  .topbar{padding:8px 14px}
+  .brand-mini{display:none}
+  .hero{padding:34px 20px 30px}
+  .hero h1{font-size:25px}
+  .hero-actions{justify-content:center}
+  .nav{top:42px}
+  .navin{padding:8px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand-mini"><span class="brand-dot"></span> Talent Uplift · IDP AI Coach</div>
+  <div class="lang-wrap">
+    <span class="lang-label">Language</span>
+    <button class="lb on" id="ben" onclick="setLang('en')">🇬🇧 English</button>
+    <button class="lb" id="bvi" onclick="setLang('vi')">🇻🇳 Tiếng Việt</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hi">
+    <div class="hero-logo">
+      <img src="Talent_Uplift_-_IDP_AI_Coach_Logo.png" alt="IDP AI Coach"
+           onerror="this.style.display='none';this.parentElement.textContent='🤖'">
+    </div>
+    <div>
+      <div class="hbadge">📘 Talent Uplift Program</div>
+      <h1>IDP <em>AI Coach</em>
+        <span class="en" style="display:inline"> — User Guide</span>
+        <span class="vi" style="display:none"> — Hướng Dẫn Sử Dụng</span>
+      </h1>
+      <p class="hero-sub en">Build stronger IDPs. Execute with ownership. Show visible readiness.</p>
+      <p class="hero-sub vi">Xây dựng IDP mạnh hơn. Thực hiện với ownership. Thể hiện readiness rõ ràng hơn.</p>
+      <div class="hero-actions">
+        <a href="https://teams.microsoft.com/l/app/?source=app-details-dialog&sharedAppResource=TaosSharedApp&titleId=T_0b95707d-bab9-d7a9-d7d8-36d320dc5cc4&threadId=19%3A51e5796c-627d-420f-b173-754fe3b016a3_e3a3eafb-d6c2-4525-bae3-bbf8311a5a02%40unq.gbl.spaces" target="_blank" rel="noopener noreferrer" class="hero-cta">
+          <img class="btn-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Microsoft_Office_Teams_%282025%E2%80%93present%29.svg/3840px-Microsoft_Office_Teams_%282025%E2%80%93present%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Microsoft Teams logo">
+          <span class="en" style="display:inline">Open on Teams</span>
+          <span class="vi" style="display:none">Mở trên Teams</span>
+        </a>
+        <a href="https://m365.cloud.microsoft/chat/?titleId=T_0b95707d-bab9-d7a9-d7d8-36d320dc5cc4" target="_blank" rel="noopener noreferrer" class="hero-secondary">
+          <img class="btn-logo" src="https://store-images.s-microsoft.com/image/apps.21661.9007199267161390.afb6b8cd-d194-4a99-b633-03cd80118a21.e9a094be-ee73-4e19-8cdf-49a27b0974ed" alt="Microsoft Copilot logo">
+          <span class="en" style="display:inline">Open on Copilot 365</span>
+          <span class="vi" style="display:none">Mở trên Copilot 365</span>
+        </a>
+        <button class="hero-secondary" onclick="copyText(getStarterPrompt())">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="en" style="display:inline">Copy Starter Prompt</span>
+          <span class="vi" style="display:none">Copy Prompt Mẫu</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="navin">
+    <a href="#quick" class="en">Quick Start</a><a href="#quick" class="vi">Bắt đầu nhanh</a>
+    <a href="#formula" class="en">Prompt Formula</a><a href="#formula" class="vi">Công thức prompt</a>
+    <a href="#modes" class="en">Use Cases</a><a href="#modes" class="vi">Cách sử dụng</a>
+    <a href="#better" class="en">Better Answers</a><a href="#better" class="vi">Output tốt hơn</a>
+    <a href="#quality" class="en">Strong IDP Action</a><a href="#quality" class="vi">Action mạnh</a>
+    <a href="#talentreview" class="en">Talent Review</a><a href="#talentreview" class="vi">Talent Review</a>
+    <a href="#templates" class="en">Templates</a><a href="#templates" class="vi">Templates</a>
+    <a href="#submit" class="en">Before Submit</a><a href="#submit" class="vi">Trước khi submit</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="notice">
+    <div class="ni">⚠️</div>
+    <div>
+      <p class="en"><strong>Important: </strong>The IDP AI Coach is a <strong>thinking and coaching tool</strong>. It supports your IDP journey but does not replace your Direct Leader, Mentor, HoD, or your own judgment. Always validate AI suggestions with the people who know your work best.</p>
+      <p class="vi"><strong>Lưu ý quan trọng: </strong>IDP AI Coach là <strong>công cụ tư duy và coaching</strong>. Công cụ này hỗ trợ hành trình IDP của bạn nhưng không thay thế Direct Leader, Mentor, HoD hoặc judgment của chính bạn. Luôn xác nhận gợi ý của AI với người hiểu rõ công việc của bạn nhất.</p>
+    </div>
+  </div>
+
+  <!-- QUICK START -->
+  <section class="sec" id="quick">
+    <div class="sh"><div class="sn">1</div>
+      <div class="st en">Quick Start: use the AI Coach in 3 steps</div>
+      <div class="st vi">Bắt đầu nhanh: dùng AI Coach trong 3 bước</div>
+    </div>
+    <div class="qs">
+      <div class="qspanel">
+        <p class="subtxt en">If you are not sure where to begin, start here. The goal is not to write a perfect prompt — the goal is to give the AI enough real context to help you.</p>
+        <p class="subtxt vi">Nếu bạn chưa biết bắt đầu từ đâu, hãy bắt đầu ở đây. Mục tiêu không phải là viết prompt hoàn hảo — mà là cung cấp đủ context thực tế để AI hỗ trợ đúng hơn.</p>
+        <div class="steps">
+          <div class="step"><div class="stepn">1</div><h4 class="en">Share your role path</h4><h4 class="vi">Chia sẻ role path</h4><p class="en">Current Role + Target Role help AI map the right level of development.</p><p class="vi">Current Role + Target Role giúp AI map đúng level phát triển.</p></div>
+          <div class="step"><div class="stepn">2</div><h4 class="en">Describe the real challenge</h4><h4 class="vi">Mô tả challenge thật</h4><p class="en">Use simple words. Behavior-based context is better than generic competency names.</p><p class="vi">Dùng từ đơn giản. Context theo behavior tốt hơn chỉ nêu tên competency.</p></div>
+          <div class="step"><div class="stepn">3</div><h4 class="en">Ask for the output</h4><h4 class="vi">Nói rõ output cần</h4><p class="en">Action, full IDP entry, review, execution help, or Talent Review update.</p><p class="vi">Action, full IDP entry, review, execution help hoặc Talent Review update.</p></div>
+        </div>
+      </div>
+      <div class="starter">
+        <div class="copyrow">
+          <h4 class="en">Starter Prompt</h4><h4 class="vi">Prompt mẫu</h4>
+          <button class="copybtn" onclick="copyText(getStarterPrompt())">Copy</button>
+        </div>
+        <div class="promptbox" id="starterPrompt">Current Role:
+Target Role:
+My current challenge is:
+Please help me create practical IDP actions that fit my real work context.</div>
+        <div class="copyrow" style="margin-top:12px">
+          <h4 class="en">Practical Example</h4><h4 class="vi">Ví dụ thực tế</h4>
+          <button class="copybtn" onclick="copyText(getPracticalStarterPrompt())">Copy</button>
+        </div>
+        <div class="promptbox" id="practicalStarterPrompt">Current Role: Senior IT Specialist
+Target Role: Team Leader of IT
+My current challenge is: I usually solve technical issues by myself, but I want to build leadership readiness by coordinating better with stakeholders and making my work more visible.
+Please help me create practical IDP actions that fit my current role and do not require direct reports.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- WHAT CAN THE TOOL HELP WITH — UNNUMBERED -->
+  <section class="sec" id="what">
+    <div class="sh">
+      <div class="st en">What can the IDP AI Coach help you with?</div>
+      <div class="st vi">IDP AI Coach có thể giúp gì cho bạn?</div>
+    </div>
+    <div class="ucg">
+      <div class="uc"><div class="uc-ic">🏗️</div>
+        <div class="uc-t en">Build your IDP</div><div class="uc-t vi">Xây dựng IDP</div>
+        <div class="uc-d en">Create strong, practical development actions aligned with your target role</div>
+        <div class="uc-d vi">Tạo development actions thực tế và phù hợp với target role của bạn</div>
+      </div>
+      <div class="uc"><div class="uc-ic">🔍</div>
+        <div class="uc-t en">Review & Improve</div><div class="uc-t vi">Review & Cải thiện</div>
+        <div class="uc-d en">Identify weak or generic actions and rewrite them with more specificity and ownership</div>
+        <div class="uc-d vi">Phát hiện action yếu hoặc generic và viết lại cụ thể hơn, có ownership hơn</div>
+      </div>
+      <div class="uc"><div class="uc-ic">🎯</div>
+        <div class="uc-t en">Execution Coaching</div><div class="uc-t vi">Coaching thực thi</div>
+        <div class="uc-d en">Get practical next steps, handle blockers, and keep your development moving forward</div>
+        <div class="uc-d vi">Nhận gợi ý next steps, xử lý blockers và giữ development tiến về phía trước</div>
+      </div>
+      <div class="uc"><div class="uc-ic">🔄</div>
+        <div class="uc-t en">Adjust Actions</div><div class="uc-t vi">Điều chỉnh Action</div>
+        <div class="uc-d en">Revise an action when circumstances change — without losing the development intent</div>
+        <div class="uc-d vi">Revise action khi tình huống thay đổi — không mất đi development intent</div>
+      </div>
+      <div class="uc"><div class="uc-ic">📊</div>
+        <div class="uc-t en">Talent Review Prep</div><div class="uc-t vi">Chuẩn bị Talent Review</div>
+        <div class="uc-d en">Turn raw progress notes into a clear, leadership-ready narrative for your review</div>
+        <div class="uc-d vi">Chuyển progress notes thô thành narrative rõ ràng cho Talent Review</div>
+      </div>
+      <div class="uc"><div class="uc-ic">🚀</div>
+        <div class="uc-t en">Leadership Shift</div><div class="uc-t vi">Leadership Shift</div>
+        <div class="uc-d en">Move from completing tasks toward building visible leadership readiness in your current role</div>
+        <div class="uc-d vi">Chuyển từ hoàn thành task sang xây dựng leadership readiness rõ ràng trong role hiện tại</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- SHORT NOTE: CONTEXT RULE -->
+  <section class="notequote">
+    <div class="qtitle">✍️ <span class="en">Context makes the difference</span><span class="vi">Context tạo nên khác biệt</span></div>
+    <p class="en"><strong>Weak prompt:</strong> “Help me create IDP actions.” <br><strong>Better prompt:</strong> include your Current Role, Target Role, real challenge, and what output you need. The clearer your context, the more practical and usable the AI response will be.</p>
+    <p class="vi"><strong>Prompt yếu:</strong> “Help me create IDP actions.” <br><strong>Prompt tốt hơn:</strong> thêm Current Role, Target Role, challenge thực tế và output bạn cần. Context càng rõ, câu trả lời của AI càng thực tế và dùng được.</p>
+  </section>
+
+  <hr class="dv">
+
+  <!-- FORMULA -->
+  <section class="sec" id="formula">
+    <div class="sh"><div class="sn">2</div>
+      <div class="st en">Prompt Formula</div>
+      <div class="st vi">Công thức prompt</div>
+    </div>
+    <div class="fg">
+      <div class="fs"><div class="fn">1</div><h4>Current Role</h4><p class="en">Use your exact role title: Senior Accountant, Product Engineer, Recruiting Specialist...</p><p class="vi">Dùng đúng role title: Senior Accountant, Product Engineer, Recruiting Specialist...</p></div>
+      <div class="fs"><div class="fn">2</div><h4>Target Role</h4><p class="en">Use your exact target role: TL of Accounting, Engineering Project Manager...</p><p class="vi">Dùng đúng target role: TL of Accounting, Engineering Project Manager...</p></div>
+      <div class="fs"><div class="fn">3</div><h4 class="en">Real challenge</h4><h4 class="vi">Challenge thật</h4><p class="en">Describe what you actually struggle with. Behavior-level context helps most.</p><p class="vi">Mô tả điều bạn thực sự gặp khó. Context theo behavior là hữu ích nhất.</p></div>
+      <div class="fs"><div class="fn">4</div><h4 class="en">Needed output</h4><h4 class="vi">Output cần</h4><p class="en">Action, full entry, review, execution help, adjustment, or Talent Review update.</p><p class="vi">Action, full entry, review, execution help, adjustment hoặc Talent Review update.</p></div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- MODES -->
+  <section class="sec" id="modes">
+    <div class="sh"><div class="sn">3</div>
+      <div class="st en">Choose what you need help with</div>
+      <div class="st vi">Chọn điều bạn cần AI hỗ trợ</div>
+    </div>
+
+    <div class="mode-grid">
+
+      <div class="mc">
+        <div class="mh"><div class="mbg m1">Mode 1</div><div class="mn en">I need to create or improve my IDP</div><div class="mn vi">Tôi cần tạo hoặc cải thiện IDP</div><div class="mw">Planning Mode</div></div>
+        <div class="mb">
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Starting IDP from scratch</span><span class="tg vi">Bắt đầu IDP từ đầu</span><span class="tg en">Creating new actions</span><span class="tg vi">Tạo actions mới</span><span class="tg en">Building full IDP Details</span><span class="tg vi">Build full IDP Details</span></div></div>
+          <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p1')">Copy</button></div><div class="pb">
+<div class="en" id="p1-en">Current Role: Recruiting Specialist
+Target Role: Team Leader of Recruitment
+
+My real gaps:
+- already stakeholder-heavy but low leadership visibility
+- reactive work style
+- limited strategic ownership
+
+Please create 3 strong IDP actions.</div>
+<div class="vi" id="p1-vi">Current Role: Recruiting Specialist
+Target Role: Team Leader of Recruitment
+
+Gaps thực tế của mình:
+- công việc đã có nhiều stakeholder nhưng leadership visibility còn thấp
+- cách làm việc còn khá reactive
+- chưa có nhiều strategic ownership
+
+Hãy giúp mình tạo 3 IDP actions mạnh, thực tế và phù hợp với role hiện tại.</div>
+</div></div>
+        </div>
+        <div style="padding:0 17px 15px">
+          <div class="full-ex">
+            <button class="fex-btn" onclick="toggleEx(this)">💡 <span class="en">See what a strong full IDP Details entry looks like</span><span class="vi">Xem ví dụ full IDP Details entry mạnh</span><span class="arr">▼</span></button>
+            <div class="fex-body">
+              <div class="fex-block"><div class="lbl">Development Action</div><div class="val">Lead a structured hiring debrief session with the requesting HoD after each key recruitment cycle</div></div>
+              <div class="fex-block"><div class="lbl">Development Goal</div><div class="val">Strengthen stakeholder management and structured communication by facilitating post-hiring reviews that improve future recruitment alignment</div></div>
+              <div class="fex-block"><div class="lbl">Development Area</div><div class="val">Cross-team Collaboration · Communication</div></div>
+              <div class="fex-block"><div class="lbl">Learning Type</div><div class="val">70 - Learning by Doing</div></div>
+              <div class="fex-block"><div class="lbl">Suggested Duration</div><div class="val">3 months</div></div>
+              <div class="fex-block"><div class="lbl">Suggested Evidence</div><div class="val">Debrief session notes · HoD feedback · Updated recruitment process note based on debrief findings</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mc">
+        <div class="mh"><div class="mbg m2">Mode 2</div><div class="mn en">I already have an action, but it feels weak</div><div class="mn vi">Tôi đã có action nhưng thấy chưa mạnh</div><div class="mw">Quality Review Mode</div></div>
+        <div class="mb">
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Too broad</span><span class="tg vi">Quá rộng</span><span class="tg en">Generic or passive</span><span class="tg vi">Generic hoặc passive</span><span class="tg en">Looks like daily task</span><span class="tg vi">Giống task hàng ngày</span></div></div>
+          <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p2')">Copy</button></div><div class="pb">
+<div class="en" id="p2-en">Review this IDP action and make it stronger:
+
+Action: Improve communication with other departments.
+
+Current Role: Procurement Specialist
+Target Role: Procurement Team Leader
+
+The action feels too vague. Please make it more specific, ownership-based, and tied to my target role.</div>
+<div class="vi" id="p2-vi">Review IDP action này và làm nó mạnh hơn:
+
+Action: Improve communication with other departments.
+
+Current Role: Procurement Specialist
+Target Role: Procurement Team Leader
+
+Action này đang hơi mơ hồ. Hãy giúp mình làm nó cụ thể hơn, có ownership hơn và gắn rõ hơn với target role.</div>
+</div></div>
+        </div>
+      </div>
+
+      <div class="mc">
+        <div class="mh"><div class="mbg m3">Mode 3</div><div class="mn en">I started an action, but I feel stuck</div><div class="mn vi">Tôi đã bắt đầu action nhưng đang bị stuck</div><div class="mw">Execution Coaching Mode</div></div>
+        <div class="mb">
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Stuck during execution</span><span class="tg vi">Đang stuck</span><span class="tg en">Action becoming task work</span><span class="tg vi">Action thành task work</span><span class="tg en">Need visibility</span><span class="tg vi">Cần visibility</span></div></div>
+          <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p3')">Copy</button></div><div class="pb">
+<div class="en" id="p3-en">I already started this action:
+Lead monthly stakeholder sync for production planning improvement.
+
+So far:
+- held 1 meeting
+- created a shared tracker
+
+My challenge:
+I feel like I am only scheduling meetings and tracking tasks. It does not feel like real leadership.
+
+What should I do next?
+
+Target Role: Production Planning Team Leader</div>
+<div class="vi" id="p3-vi">Mình đã bắt đầu action này:
+Lead monthly stakeholder sync for production planning improvement.
+
+Hiện tại mình đã:
+- tổ chức 1 buổi họp
+- tạo một shared tracker
+
+Challenge của mình:
+Mình cảm thấy mình chỉ đang schedule meeting và tracking task, chưa thật sự thể hiện leadership.
+
+Mình nên làm gì tiếp theo?
+
+Target Role: Production Planning Team Leader</div>
+</div></div>
+        </div>
+      </div>
+
+      <div class="mc">
+        <div class="mh"><div class="mbg m4">Mode 4</div><div class="mn en">My original action no longer works</div><div class="mn vi">Action ban đầu không còn phù hợp</div><div class="mw">Adjustment Mode</div></div>
+        <div class="mb">
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Project paused</span><span class="tg vi">Project bị pause</span><span class="tg en">Work scope changed</span><span class="tg vi">Scope đổi</span><span class="tg en">Need replacement action</span><span class="tg vi">Cần action thay thế</span></div></div>
+          <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p4')">Copy</button></div><div class="pb">
+<div class="en" id="p4-en">This action is no longer practical:
+Lead one cross-functional process improvement project.
+
+Reason:
+The project was paused and I do not know when it will restart.
+
+Original development goal:
+Strengthen structured problem-solving and cross-functional stakeholder handling.
+
+Please help me revise the action without losing that development goal.</div>
+<div class="vi" id="p4-vi">Action này không còn thực tế nữa:
+Lead one cross-functional process improvement project.
+
+Lý do:
+Project đã bị pause và mình chưa biết khi nào sẽ restart.
+
+Development goal ban đầu:
+Strengthen structured problem-solving and cross-functional stakeholder handling.
+
+Hãy giúp mình revise action này mà vẫn giữ nguyên development goal ban đầu.</div>
+</div></div>
+        </div>
+      </div>
+
+      <div class="mc">
+        <div class="mh"><div class="mbg m5">Mode 5</div><div class="mn en">I need to show progress and readiness</div><div class="mn vi">Tôi cần thể hiện progress và readiness</div><div class="mw">Talent Review Mode</div></div>
+        <div class="mb">
+          <div class="mcol"><h5 class="en">Best used when</h5><h5 class="vi">Dùng khi</h5><div class="tl"><span class="tg en">Raw progress notes</span><span class="tg vi">Raw progress notes</span><span class="tg en">Talent Review prep</span><span class="tg vi">Chuẩn bị Talent Review</span><span class="tg en">Need impact narrative</span><span class="tg vi">Cần impact narrative</span></div></div>
+          <div class="mcol"><div class="copyrow"><h5 class="en">Example prompt</h5><h5 class="vi">Prompt ví dụ</h5><button class="copybtn" onclick="copyPrompt('p5')">Copy</button></div><div class="pb">
+<div class="en" id="p5-en">Help me write a stronger Talent Review update.
+
+Action:
+Lead monthly stakeholder sync for IDP system improvement
+
+Raw progress:
+- held 2 meetings with HR and IT
+- created a shared issue tracker
+- followed up 3 open items
+- shared 1 progress update with my leader
+
+I want to show capability growth and impact, not just list activities.
+
+Target Role: Team Leader of Talent Development</div>
+<div class="vi" id="p5-vi">Giúp mình viết Talent Review update mạnh hơn.
+
+Action:
+Lead monthly stakeholder sync for IDP system improvement
+
+Raw progress:
+- đã tổ chức 2 buổi họp với HR và IT
+- đã tạo shared issue tracker
+- đã follow up 3 open items
+- đã chia sẻ 1 progress update với leader
+
+Mình muốn thể hiện capability growth và impact, không chỉ liệt kê hoạt động đã làm.
+
+Target Role: Team Leader of Talent Development</div>
+</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- BETTER ANSWERS -->
+  <section class="sec" id="better">
+    <div class="sh"><div class="sn">4</div>
+      <div class="st en">How to get better answers</div>
+      <div class="st vi">Cách để có câu trả lời tốt hơn</div>
+    </div>
+    <div class="dd">
+      <div class="ds">
+        <h4>✅ <span class="en">Do this</span><span class="vi">Nên làm</span></h4>
+        <ul class="cl">
+          <li>✅ <span class="en">Share your real work context: team size, authority, current work, constraints, and available opportunities.</span><span class="vi">Chia sẻ context thật: team size, authority, công việc hiện tại, giới hạn và cơ hội đang có.</span></li>
+          <li>✅ <span class="en">Push back when output is not strong enough.</span><span class="vi">Push lại khi output chưa đủ mạnh.</span></li>
+          <li>✅ <span class="en">Describe gaps as real behaviors, not only competency names.</span><span class="vi">Mô tả gaps theo behavior thật, không chỉ nêu tên competency.</span></li>
+          <li>✅ <span class="en">Use the output as a draft and validate with your Direct Leader or Mentor.</span><span class="vi">Dùng output như bản nháp và xác nhận với Direct Leader hoặc Mentor.</span></li>
+        </ul>
+      </div>
+      <div class="dn">
+        <h4>❌ <span class="en">Avoid this</span><span class="vi">Không nên làm</span></h4>
+        <ul class="cl">
+          <li>❌ <span class="en">Very short prompts with no role, gap, or context.</span><span class="vi">Prompt quá ngắn, không có role, gap hoặc context.</span></li>
+          <li>❌ <span class="en">Only naming a competency without explaining the behavior.</span><span class="vi">Chỉ nêu tên competency mà không mô tả behavior.</span></li>
+          <li>❌ <span class="en">Pretending you have authority or project access you do not actually have.</span><span class="vi">Giả vờ có authority hoặc project access mà bạn chưa có.</span></li>
+          <li>❌ <span class="en">Accepting the first answer without checking realism and usefulness.</span><span class="vi">Chấp nhận câu trả lời đầu tiên mà không kiểm tra tính thực tế và hữu ích.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- FOLLOW UP PROMPTS -->
+  <section class="sec" id="followup">
+    <div class="sh"><div class="sn">Tip</div>
+      <div class="st en">If the answer is not strong enough, say this</div>
+      <div class="st vi">Nếu câu trả lời chưa đủ mạnh, hãy hỏi tiếp như sau</div>
+    </div>
+    <p class="subtxt en">The AI often improves significantly when you clarify what is missing. Use these follow-up prompts to strengthen the output.</p>
+    <p class="subtxt vi">AI thường cải thiện rất nhiều khi bạn nói rõ output đang thiếu gì. Dùng các follow-up prompts này để làm câu trả lời mạnh hơn.</p>
+    <div class="tg2">
+      <div class="tb"><div class="thead">💬 <span class="en">Make it practical</span><span class="vi">Làm thực tế hơn</span><button class="tcopy" onclick="copyPrompt('f1')">Copy</button></div><div class="tbody"><div class="en" id="f1-en">This still feels too generic. Make it more specific to my real work.</div><div class="vi" id="f1-vi">Câu trả lời này vẫn còn generic. Hãy làm nó cụ thể hơn theo công việc thực tế của mình.</div></div></div>
+      <div class="tb"><div class="thead">💬 <span class="en">Fix authority scope</span><span class="vi">Chỉnh theo authority thật</span><button class="tcopy" onclick="copyPrompt('f2')">Copy</button></div><div class="tbody"><div class="en" id="f2-en">I do not have authority to assign tasks. Please adjust the action based on peer coordination and stakeholder influence.</div><div class="vi" id="f2-vi">Mình không có authority để giao task. Hãy chỉnh action theo hướng peer coordination và stakeholder influence.</div></div></div>
+      <div class="tb"><div class="thead">💬 <span class="en">Increase leadership value</span><span class="vi">Tăng leadership value</span><button class="tcopy" onclick="copyPrompt('f3')">Copy</button></div><div class="tbody"><div class="en" id="f3-en">This sounds too operational. Make the leadership growth and visibility more clear.</div><div class="vi" id="f3-vi">Câu trả lời này vẫn nghe quá operational. Hãy làm rõ leadership growth và visibility hơn.</div></div></div>
+      <div class="tb"><div class="thead">💬 <span class="en">Control length</span><span class="vi">Rút gọn output</span><button class="tcopy" onclick="copyPrompt('f4')">Copy</button></div><div class="tbody"><div class="en" id="f4-en">Rewrite this as a concise IDP entry only. No explanation, no coaching note.</div><div class="vi" id="f4-vi">Hãy viết lại thành IDP entry ngắn gọn thôi. Không giải thích thêm, không coaching note.</div></div></div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- SHORT REMINDER: LEADERSHIP READINESS -->
+  <section class="notequote dark">
+    <div class="qtitle">🌱 <span class="en">Leadership readiness starts before the title</span><span class="vi">Leadership readiness bắt đầu trước khi có title</span></div>
+    <p class="en">Many Talent Pool members do not yet have direct reports or formal authority. That is normal. At this stage, leadership is shown through how you influence stakeholders, coordinate across teams, communicate proactively, create structure, and take ownership of outcomes in your current role.</p>
+    <p class="vi">Nhiều Talent Pool members hiện chưa có direct reports hoặc formal authority. Điều này hoàn toàn bình thường. Ở giai đoạn này, leadership được thể hiện qua cách bạn influence stakeholders, coordinate cross-team, communicate chủ động, tạo structure và own outcomes trong role hiện tại.</p>
+  </section>
+
+  <hr class="dv">
+
+  <!-- QUALITY -->
+  <section class="sec" id="quality">
+    <div class="sh"><div class="sn">9</div>
+      <div class="st en">What makes a strong IDP action?</div>
+      <div class="st vi">Điều gì tạo nên một IDP action mạnh?</div>
+    </div>
+    <div class="qg">
+      <div class="qi"><h5>🎯 <span class="en">Specific</span><span class="vi">Cụ thể</span></h5><span class="qgood">Lead monthly stakeholder sync for inventory reporting improvement</span><span class="qbad">❌ Improve communication</span></div>
+      <div class="qi"><h5>💼 <span class="en">Real work-based</span><span class="vi">Bám công việc thật</span></h5><span class="qgood">Design debrief format and run post-hiring review with HoD</span><span class="qbad">❌ Invented project with no real anchor</span></div>
+      <div class="qi"><h5>🙋 <span class="en">Ownership verb</span><span class="vi">Có ownership</span></h5><span class="qgood">Lead · Design · Facilitate · Present · Propose · Implement · Own</span><span class="qbad">❌ Join · Support · Attend · Assist</span></div>
+      <div class="qi"><h5>👁️ <span class="en">Visible evidence</span><span class="vi">Evidence visible</span></h5><span class="qgood">Deck · tracker · summary · feedback record · decision note</span><span class="qbad">❌ Gained new knowledge</span></div>
+      <div class="qi"><h5>💪 <span class="en">Stretching but realistic</span><span class="vi">Thử thách nhưng khả thi</span></h5><span class="qgood">Slightly uncomfortable but executable in your role</span><span class="qbad">❌ Lead company-wide transformation</span></div>
+      <div class="qi"><h5>🔗 <span class="en">Target role-linked</span><span class="vi">Gắn target role</span></h5><span class="qgood">Builds a capability needed for the target role</span><span class="qbad">❌ Could apply to any role</span></div>
+    </div>
+    <div class="notice" style="margin-top:12px;margin-bottom:0">
+      <div class="ni">⚠️</div>
+      <div>
+        <p class="en"><strong>Push back when you see these warning signs in the AI output:</strong></p>
+        <p class="vi"><strong>Push lại khi thấy các dấu hiệu này trong AI output:</strong></p>
+        <div class="wts">
+          <span class="wt en">⚠️ Generic wording</span><span class="wt vi">⚠️ Wording generic</span>
+          <span class="wt en">⚠️ Only coordination / tracking</span><span class="wt vi">⚠️ Chỉ coordination / tracking</span>
+          <span class="wt en">⚠️ Requires authority you do not have</span><span class="wt vi">⚠️ Cần authority bạn chưa có</span>
+          <span class="wt en">⚠️ Too broad</span><span class="wt vi">⚠️ Quá rộng</span>
+          <span class="wt en">⚠️ Not paste-ready</span><span class="wt vi">⚠️ Không paste-ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- TALENT REVIEW -->
+  <section class="sec" id="talentreview">
+    <div class="sh"><div class="sn">6</div>
+      <div class="st en">Preparing stronger Talent Review content</div>
+      <div class="st vi">Chuẩn bị nội dung Talent Review mạnh hơn</div>
+    </div>
+    <div class="bag" style="margin-top:0;margin-bottom:14px">
+      <div class="bb bad">
+        <div class="bl">❌ <span class="en">Weak update — activities only</span><span class="vi">Update yếu — chỉ liệt kê việc đã làm</span></div>
+        <code>– attended meetings<br>– followed up on tasks<br>– created a tracker<br>– joined the project</code>
+      </div>
+      <div class="bb good">
+        <div class="bl">✅ <span class="en">Strong update — capability + impact</span><span class="vi">Update mạnh — capability + impact</span></div>
+        <code>→ Built a structured follow-up rhythm across two teams<br>→ Improved visibility of open issues<br>→ Shifted from task coordination to ownership of outcomes<br>→ Communicated progress proactively to leader before being asked</code>
+      </div>
+    </div>
+    <p class="subtxt en">A strong Talent Review update should answer all five questions:</p>
+    <p class="subtxt vi">Một Talent Review update mạnh nên trả lời được 5 câu hỏi:</p>
+    <div class="trg">
+      <div class="trq"><div class="trn">1</div><p class="en">What did I do?</p><p class="vi">Tôi đã làm gì?</p></div>
+      <div class="trq"><div class="trn">2</div><p class="en">What did I achieve or deliver?</p><p class="vi">Tôi đã đạt / deliver được gì?</p></div>
+      <div class="trq"><div class="trn">3</div><p class="en">What capability did I develop?</p><p class="vi">Tôi phát triển capability gì?</p></div>
+      <div class="trq"><div class="trn">4</div><p class="en">What impact did I create?</p><p class="vi">Tôi tạo ra impact gì?</p></div>
+      <div class="trq"><div class="trn">5</div><p class="en">Why does this show readiness?</p><p class="vi">Điều này thể hiện readiness như thế nào?</p></div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- TEMPLATES -->
+  <section class="sec" id="templates">
+    <div class="sh"><div class="sn">7</div>
+      <div class="st en">Prompt templates — copy and use</div>
+      <div class="st vi">Prompt templates — copy và dùng ngay</div>
+    </div>
+    <div class="tg2">
+      <div class="tb"><div class="thead">🏗️ <span class="en">Create IDP actions</span><span class="vi">Tạo IDP actions</span><button class="tcopy" onclick="copyBlock('t1')">Copy</button></div><div class="tbody" id="t1">Current Role:
+Target Role:
+
+My real gaps:
+-
+-
+-
+
+Help me create 3 strong IDP actions.</div></div>
+      <div class="tb"><div class="thead">📋 <span class="en">Full IDP entry</span><span class="vi">Full IDP entry</span><button class="tcopy" onclick="copyBlock('t2')">Copy</button></div><div class="tbody" id="t2">Help me complete a full IDP Details entry for this action:
+
+Development Action:
+Current Role:
+Target Role:
+
+Development Intent:
+-
+-
+-</div></div>
+      <div class="tb"><div class="thead">🔍 <span class="en">Review & strengthen</span><span class="vi">Review & cải thiện</span><button class="tcopy" onclick="copyBlock('t3')">Copy</button></div><div class="tbody" id="t3">Review this IDP action and make it stronger:
+
+Action:
+Current Role:
+Target Role:
+
+What feels weak:
+</div></div>
+      <div class="tb"><div class="thead">🎯 <span class="en">Execution coaching</span><span class="vi">Coaching thực thi</span><button class="tcopy" onclick="copyBlock('t4')">Copy</button></div><div class="tbody" id="t4">I already started this action:
+
+So far:
+-
+-
+-
+
+Current challenge:
+
+What should I do next?
+
+Target Role:</div></div>
+      <div class="tb"><div class="thead">🔄 <span class="en">Adjust action</span><span class="vi">Điều chỉnh action</span><button class="tcopy" onclick="copyBlock('t5')">Copy</button></div><div class="tbody" id="t5">This action is no longer practical:
+
+Reason:
+
+Original Action:
+Original Development Goal:
+
+Please revise it without losing the same development goal.</div></div>
+      <div class="tb"><div class="thead">📊 <span class="en">Talent Review update</span><span class="vi">Talent Review update</span><button class="tcopy" onclick="copyBlock('t6')">Copy</button></div><div class="tbody" id="t6">Help me turn this raw progress into a stronger Talent Review update.
+
+Action:
+
+Raw progress:
+-
+-
+-
+
+I want to show capability growth and impact.
+
+Target Role:</div></div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <!-- SUBMIT CHECKLIST -->
+  <section class="sec" id="submit">
+    <div class="sh"><div class="sn">8</div>
+      <div class="st en">Before you submit to the IDP system</div>
+      <div class="st vi">Trước khi submit vào IDP system</div>
+    </div>
+    <p class="subtxt en">Use this checklist before copying AI output into the IDP system.</p>
+    <p class="subtxt vi">Dùng checklist này trước khi copy output của AI vào IDP system.</p>
+    <div class="checkgrid">
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Development Action is short, one-line, and not overloaded with execution details.</p><p class="vi">Development Action ngắn, một dòng, không chứa quá nhiều execution details.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Final IDP fields are in English, even if you chat with the AI in Vietnamese.</p><p class="vi">Các IDP fields cuối cùng bằng tiếng Anh, kể cả khi bạn chat bằng tiếng Việt.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Learning Type uses one exact system value only: 70 - Learning by Doing, 20 - Learning through Others, or 10 - Formal Learning.</p><p class="vi">Learning Type chỉ dùng một system value chính xác: 70 - Learning by Doing, 20 - Learning through Others, hoặc 10 - Formal Learning.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">The action is realistic for your current authority level and work access.</p><p class="vi">Action phù hợp với authority level và work access hiện tại của bạn.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Evidence is trackable: notes, deck, tracker, feedback, summary, or deliverable.</p><p class="vi">Evidence track được: notes, deck, tracker, feedback, summary hoặc deliverable.</p></div>
+      <div class="checkitem"><div class="ck">✓</div><p class="en">Your Direct Leader or Mentor has reviewed or validated the direction.</p><p class="vi">Direct Leader hoặc Mentor đã review / validate hướng phát triển.</p></div>
+    </div>
+    <div class="notice" style="margin-top:14px;margin-bottom:0">
+      <div class="ni">🌐</div>
+      <div>
+        <p class="en"><strong>Language Tip:</strong> You may chat with the AI in Vietnamese or English. However, the final IDP fields should be in English: Development Action, Development Goal, Development Area, Learning Type, Duration, Timeline, and Evidence.</p>
+        <p class="vi"><strong>Language Tip:</strong> Bạn có thể chat với AI bằng tiếng Việt hoặc tiếng Anh. Tuy nhiên, các IDP fields cuối cùng nên bằng tiếng Anh: Development Action, Development Goal, Development Area, Learning Type, Duration, Timeline và Evidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="dv">
+
+  <div class="notequote dark">
+    <div class="qtitle">🌟 <span class="en">Final reminder</span><span class="vi">Lời nhắc cuối</span></div>
+    <p class="en">Use the IDP AI Coach as a development thinking partner. Bring real context, challenge generic answers, and validate the final direction with your Direct Leader or Mentor. The best IDP actions are realistic, visible, and connected to how you are building leadership readiness today.</p>
+    <p class="vi">Hãy dùng IDP AI Coach như một development thinking partner. Cung cấp context thật, challenge những câu trả lời còn generic và validate hướng cuối cùng với Direct Leader hoặc Mentor. IDP actions tốt nhất là realistic, visible và gắn với cách bạn đang xây dựng leadership readiness hôm nay.</p>
+    <div class="final-cta hero-actions" style="margin-top:16px">
+      <a href="https://teams.microsoft.com/l/app/?source=app-details-dialog&sharedAppResource=TaosSharedApp&titleId=T_0b95707d-bab9-d7a9-d7d8-36d320dc5cc4&threadId=19%3A51e5796c-627d-420f-b173-754fe3b016a3_e3a3eafb-d6c2-4525-bae3-bbf8311a5a02%40unq.gbl.spaces" target="_blank" rel="noopener noreferrer" class="hero-cta">
+        <img class="btn-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Microsoft_Office_Teams_%282025%E2%80%93present%29.svg/3840px-Microsoft_Office_Teams_%282025%E2%80%93present%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Microsoft Teams logo">
+        <span class="en" style="display:inline">Open on Teams</span>
+        <span class="vi" style="display:none">Mở trên Teams</span>
+      </a>
+      <a href="https://m365.cloud.microsoft/chat/?titleId=T_0b95707d-bab9-d7a9-d7d8-36d320dc5cc4" target="_blank" rel="noopener noreferrer" class="hero-secondary">
+        <img class="btn-logo" src="https://store-images.s-microsoft.com/image/apps.21661.9007199267161390.afb6b8cd-d194-4a99-b633-03cd80118a21.e9a094be-ee73-4e19-8cdf-49a27b0974ed" alt="Microsoft Copilot logo">
+        <span class="en" style="display:inline">Open on Copilot 365</span>
+        <span class="vi" style="display:none">Mở trên Copilot 365</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  <img src="Uplift_Text_Light.png" alt="Talent Uplift"
+       onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<p style=\'color:var(--orange);font-weight:800;font-size:14px;margin-bottom:5px\'>TALENT UPLIFT</p>')">
+  <p><strong>IDP AI Coach — User Guide</strong> · Talent Uplift Program 2026 · CVRO Asia Human Resources</p>
+</div>
+
+<div class="toast" id="toast">Copied!</div>
+
+<script>
+function setLang(lang){
+  const isVi = lang==='vi';
+  document.body.className = isVi ? 'lv' : '';
+  document.getElementById('ben').className = 'lb'+(isVi?'':' on');
+  document.getElementById('bvi').className = 'lb'+(isVi?' on':'');
+
+  document.querySelectorAll('span.en').forEach(el=>{ el.style.display = isVi?'none':'inline'; });
+  document.querySelectorAll('span.vi').forEach(el=>{ el.style.display = isVi?'inline':'none'; });
+
+  document.querySelectorAll('.qgood.en,.qbad.en').forEach(el=>{ el.style.display = isVi?'none':'block'; });
+  document.querySelectorAll('.qgood.vi,.qbad.vi').forEach(el=>{ el.style.display = isVi?'block':'none'; });
+}
+
+function toggleEx(btn){
+  const body = btn.nextElementSibling;
+  const open = body.classList.toggle('open');
+  btn.querySelector('.arr').textContent = open ? '▲' : '▼';
+}
+
+function showToast(){
+  const t=document.getElementById('toast');
+  t.textContent = document.body.className==='lv' ? 'Đã copy!' : 'Copied!';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1500);
+}
+
+function copyText(text){
+  navigator.clipboard.writeText(text).then(showToast).catch(()=>{
+    const ta=document.createElement('textarea');
+    ta.value=text;document.body.appendChild(ta);ta.select();
+    document.execCommand('copy');document.body.removeChild(ta);showToast();
+  });
+}
+
+function isViMode(){
+  return document.body.className === 'lv';
+}
+
+function copyBlock(id){
+  const el=document.getElementById(id);
+  if(el) copyText(el.innerText.trim());
+}
+
+function copyPrompt(baseId){
+  const id = baseId + (isViMode() ? '-vi' : '-en');
+  copyBlock(id);
+}
+
+function getStarterPrompt(){
+  if(isViMode()){
+    return `Current Role:
+Target Role:
+Challenge hiện tại của mình là:
+Hãy giúp mình tạo IDP actions thực tế và phù hợp với work context hiện tại.`;
+  }
+  return `Current Role:
+Target Role:
+My current challenge is:
+Please help me create practical IDP actions that fit my real work context.`;
+}
+
+function getPracticalStarterPrompt(){
+  if(isViMode()){
+    return `Current Role: Senior IT Specialist
+Target Role: Team Leader of IT
+Challenge hiện tại của mình là: Mình thường tự xử lý technical issues một mình, nhưng mình muốn build leadership readiness bằng cách coordinate tốt hơn với stakeholders và làm cho work của mình visible hơn.
+Hãy giúp mình tạo IDP actions thực tế, phù hợp với role hiện tại và không yêu cầu direct reports.`;
+  }
+  return `Current Role: Senior IT Specialist
+Target Role: Team Leader of IT
+My current challenge is: I usually solve technical issues by myself, but I want to build leadership readiness by coordinating better with stakeholders and making my work more visible.
+Please help me create practical IDP actions that fit my current role and do not require direct reports.`;
+}
+
+setLang('en');
+</script>
+</body>
+</html>
